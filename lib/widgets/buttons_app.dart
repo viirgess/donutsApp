@@ -1,3 +1,4 @@
+import 'package:app/pages/menu_page.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/color_source.dart';
@@ -8,7 +9,6 @@ class ButtonAppDonuts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      //alignment: Alignment.center,
       height: 50,
       width: 120,
       decoration: BoxDecoration(
@@ -36,6 +36,10 @@ class ButtonAppDonuts extends StatelessWidget {
           ),
           child: TextButton(
             onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MenuPage()),
+              );
               debugPrint('Received click');
             },
             child: const Row(

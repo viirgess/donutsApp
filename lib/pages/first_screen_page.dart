@@ -94,17 +94,17 @@ class FirstScreenPage extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  flex: 2,
+                  flex: 3,
                   child: Align(
                     alignment: Alignment.bottomRight,
                     child: Container(
                       width: 290,
                       height: 316,
-                      color: Colors.red,
+                      color: Colors.white,
                       child: Image.asset(
                         'images/wallpaper.png',
                         width: 360,
-                        height: 316.5,
+                        height: 370.5,
                       ),
                     ),
                   ),
