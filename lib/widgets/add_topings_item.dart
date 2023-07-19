@@ -200,7 +200,7 @@ class _AddToppingsItemState extends State<AddToppingsItem> {
               ],
             ),
           ),
-          SizedBox(height: 20,)
+          const SizedBox(height: 20,)
         ],
       ),
     );

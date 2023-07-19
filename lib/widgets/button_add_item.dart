@@ -3,9 +3,17 @@ import 'package:app/utils/color_source.dart';
 import 'package:flutter/material.dart';
 
 class ButtonAddItem extends StatelessWidget {
+  final String title;
+  final String description;
+  final String imagePath;
   final Color buttonColor;
+  final Color containerColor;
   const ButtonAddItem({
-    super.key, required this.buttonColor,
+    super.key,
+    required this.buttonColor,
+    required this.title,
+    required this.description,
+    required this.imagePath, required this.containerColor,
   });
 
   @override
@@ -37,13 +45,20 @@ class ButtonAddItem extends StatelessWidget {
             ),
           ),
           child: Container(
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),color: buttonColor ),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30), color: buttonColor),
             child: TextButton(
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const DescriptionItem()),
+                    builder: (context) => DescriptionItem(
+                      title: title,
+                      description: description,
+                      imagePath: imagePath,
+                      containerColor: containerColor,
+                    ),
+                  ),
                 );
                 debugPrint('Received click');
               },

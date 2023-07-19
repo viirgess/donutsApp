@@ -1,13 +1,16 @@
+
 import 'package:app/pages/menu_page.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/color_source.dart';
 
 class ButtonAddToBusketItem extends StatelessWidget {
+   
   const ButtonAddToBusketItem({super.key});
 
   @override
   Widget build(BuildContext context) {
+    
     return Container(
       height: 45,
       width: double.infinity,
@@ -60,7 +63,7 @@ class ButtonAddToBusketItem extends StatelessWidget {
                   SizedBox(
                     width: 10,
                   ),
-                  Text('\$3.95',
+                  Text('\$9.00',
                       style: TextStyle(color: ColorSourceApp.black)),
                 ],
               ),

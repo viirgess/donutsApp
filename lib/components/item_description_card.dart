@@ -6,26 +6,30 @@ class ItemDescriptionCard extends StatelessWidget {
   final String imagePath;
   final String title;
   final String description;
+  
 
   const ItemDescriptionCard(
       {super.key,
       required this.imagePath,
       required this.title,
-      required this.description});
+      required this.description, });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 17, horizontal: 24),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
             imagePath,
             width: 90,
             height: 90,
           ),
-          const SizedBox(height: 15,),
+          const SizedBox(
+            height: 15,
+          ),
           Column(
             children: [
               SizedBox(
@@ -36,7 +40,7 @@ class ItemDescriptionCard extends StatelessWidget {
                     color: ColorSourceApp.black,
                     fontSize: 20,
                   ),
-                  textAlign: TextAlign.start,
+                  textAlign: TextAlign.center,
                 ),
               ),
               const SizedBox(
@@ -46,14 +50,13 @@ class ItemDescriptionCard extends StatelessWidget {
                 width: 350,
                 child: Text(
                   description,
-                  style: const TextStyle(
-                      color: ColorSourceApp.grey, fontSize: 14),
-                      textAlign: TextAlign.center,
+                  style:
+                      const TextStyle(color: ColorSourceApp.grey, fontSize: 14),
+                  textAlign: TextAlign.center,
                 ),
               ),
             ],
           ),
-          
         ],
       ),
     );
