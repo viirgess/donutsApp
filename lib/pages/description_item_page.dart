@@ -1,8 +1,8 @@
 import 'package:app/components/item_description_card.dart';
 import 'package:app/utils/color_source.dart';
 import 'package:app/utils/text_style.dart';
-import 'package:app/widgets/add_topings_item.dart';
-import 'package:app/widgets/button_busket.dart';
+import 'package:app/components/add_topings_item.dart';
+import 'package:app/components/button_busket.dart';
 import 'package:app/widgets/grid_item_description.dart';
 
 import 'package:flutter/material.dart';

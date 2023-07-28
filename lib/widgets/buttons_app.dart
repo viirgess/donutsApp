@@ -10,7 +10,7 @@ class ButtonAppDonuts extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 50,
-      width: 120,
+      width: 150,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
         border: Border.all(
@@ -43,6 +43,7 @@ class ButtonAppDonuts extends StatelessWidget {
               debugPrint('Received click');
             },
             child: const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(
                   width: 3,

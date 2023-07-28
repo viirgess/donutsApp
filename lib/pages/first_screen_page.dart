@@ -20,7 +20,7 @@ class FirstScreenPage extends StatelessWidget {
                   width: 200,
                   height: 200,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+
                     border: Border.all(color: Colors.black, width: 0.5),
                   ),
                 );

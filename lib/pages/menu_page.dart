@@ -45,6 +45,7 @@ class _MenuPageState extends State<MenuPage> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               child: Row(
+
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Image.asset('images/menu.png', height: 39,),
@@ -58,6 +59,7 @@ class _MenuPageState extends State<MenuPage> {
          const GridMenuItem(),
           GestureDetector(
             onTap: () {
+
               setState(() {
                 selectedItem = 1;
               });
@@ -65,6 +67,7 @@ class _MenuPageState extends State<MenuPage> {
             child: Container(
               color: ColorSourceApp.lightBlue,
               child: const Row(
+
                 children: [
                   CardMenuItem(
                     title: 'SPRINKLE-TOPPED BLUE CREAM DREAM',

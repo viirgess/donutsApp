@@ -1,6 +1,9 @@
 import 'package:app/utils/color_source.dart';
 import 'package:app/utils/text_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'cubit/checkbox_cubit.dart';
 
 class AddToppingsItem extends StatefulWidget {
   const AddToppingsItem({super.key});
@@ -18,10 +21,10 @@ class _AddToppingsItemState extends State<AddToppingsItem> {
       color: ColorSourceApp.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-       // mainAxisAlignment: MainAxisAlignment.start,
+
 
         children: [
-          
+
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 22),
             child: Text(
@@ -36,24 +39,30 @@ class _AddToppingsItemState extends State<AddToppingsItem> {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
             child: Row(
               children: [
-                SizedBox(
-                  height: 30,
-                  width: 30,
-                  child: Checkbox(
-                    value: isChecked,
-                    onChanged: (bool? value) {
-                      setState(() {
-                        isChecked = value ?? false;
-                      });
-                    },
-                  ),
+              SizedBox(
+              height: 30,
+              width: 30,
+              child: BlocProvider<CheckboxCubit>(
+                create: (context) => CheckboxCubit(),
+                child: BlocBuilder<CheckboxCubit, CheckboxState>(
+                  builder: (context, state) {
+                    return Checkbox(
+                      value: state.isChecked,
+                      onChanged: (value) {
+                        context.read<CheckboxCubit>().changeValue(value!);
+                      }, // Remove extra closing parenthesis here
+                    );
+                  },
                 ),
+              ),
+            ),
+
                 Text(
                   'Sprinkles',
                   style: TextStyleApp.lato.copyWith(
-                    color: ColorSourceApp.grey,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500
+                      color: ColorSourceApp.grey,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500
                   ),
                 ),
                 const Spacer(),
@@ -85,9 +94,9 @@ class _AddToppingsItemState extends State<AddToppingsItem> {
                 Text(
                   'Chocolate chips',
                   style: TextStyleApp.lato.copyWith(
-                    color: ColorSourceApp.grey,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500
+                      color: ColorSourceApp.grey,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500
                   ),
                 ),
                 const Spacer(),
@@ -119,9 +128,9 @@ class _AddToppingsItemState extends State<AddToppingsItem> {
                 Text(
                   'Crushed nuts',
                   style: TextStyleApp.lato.copyWith(
-                    color: ColorSourceApp.grey,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500
+                      color: ColorSourceApp.grey,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500
                   ),
                 ),
                 const Spacer(),
@@ -153,9 +162,9 @@ class _AddToppingsItemState extends State<AddToppingsItem> {
                 Text(
                   'Fruity drizzles',
                   style: TextStyleApp.lato.copyWith(
-                    color: ColorSourceApp.grey,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500
+                      color: ColorSourceApp.grey,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500
                   ),
                 ),
                 const Spacer(),
@@ -187,9 +196,9 @@ class _AddToppingsItemState extends State<AddToppingsItem> {
                 Text(
                   'Coconut flakes',
                   style: TextStyleApp.lato.copyWith(
-                    color: ColorSourceApp.grey,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500
+                      color: ColorSourceApp.grey,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500
                   ),
                 ),
                 const Spacer(),
