@@ -16,7 +16,7 @@ class CardMenuItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 18),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5,),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -26,7 +26,7 @@ class CardMenuItem extends StatelessWidget {
             width: 90,
             height: 90,
           ),
-          SizedBox(width: 10,),
+          const SizedBox(width: 10,),
           Column(
             children: [
               SizedBox(

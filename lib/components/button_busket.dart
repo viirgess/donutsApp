@@ -1,16 +1,15 @@
-
 import 'package:app/pages/menu_page.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/color_source.dart';
 
 class ButtonAddToBusketItem extends StatelessWidget {
-   
-  const ButtonAddToBusketItem({super.key});
+  final double totalPrice;
+
+  ButtonAddToBusketItem({super.key, required this.totalPrice});
 
   @override
   Widget build(BuildContext context) {
-    
     return Container(
       height: 45,
       width: double.infinity,
@@ -38,33 +37,36 @@ class ButtonAddToBusketItem extends StatelessWidget {
             ),
           ),
           child: Container(
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),color: Colors.amber, ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              color: Colors.amber,
+            ),
             child: TextButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MenuPage()),
+                  MaterialPageRoute(builder: (context) => const MenuPage()),
                 );
                 debugPrint('Received click');
               },
-              child: const Row(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                   Icon(
+                  const Icon(
                     Icons.shopping_basket_outlined,
                     color: ColorSourceApp.black,
                     size: 17,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 3,
                   ),
-                  Text('Add to Card ',
+                  const Text('Add to Card ',
                       style: TextStyle(color: ColorSourceApp.black)),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
-                  Text('\$9.00',
-                      style: TextStyle(color: ColorSourceApp.black)),
+                  Text('\$$totalPrice',
+                      style: const TextStyle(color: ColorSourceApp.black)),
                 ],
               ),
             ),
