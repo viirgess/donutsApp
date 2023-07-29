@@ -79,7 +79,7 @@ class DescriptionItem extends StatelessWidget {
                   color: ColorSourceApp.white,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 30, vertical: 10),
+                        horizontal: 30, vertical: 16),
                     child: ButtonAddToBusketItem(
                       totalPrice: state.totalPrice,
                     ),
@@ -87,6 +87,7 @@ class DescriptionItem extends StatelessWidget {
                 );
               },
             ),
+            const GridImemDescription(),
           ],
         ),
       ),

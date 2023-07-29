@@ -16,17 +16,21 @@ class CardMenuItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5,),
+      padding: const EdgeInsets.symmetric(
+        vertical: 10,
+        horizontal: 5,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          
           Image.asset(
             imagePath,
             width: 90,
             height: 90,
           ),
-          const SizedBox(width: 10,),
+          const SizedBox(
+            width: 10,
+          ),
           Column(
             children: [
               SizedBox(
@@ -47,8 +51,8 @@ class CardMenuItem extends StatelessWidget {
                 width: 230,
                 child: Text(
                   description,
-                  style: const TextStyle(
-                      color: ColorSourceApp.grey, fontSize: 12),
+                  style:
+                      const TextStyle(color: ColorSourceApp.grey, fontSize: 12),
                 ),
               ),
             ],
