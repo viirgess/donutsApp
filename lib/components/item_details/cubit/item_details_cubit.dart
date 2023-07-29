@@ -7,11 +7,21 @@ part 'item_details_state.dart';
 class ItemDetailsCubit extends Cubit<ItemDetailsState> {
   ItemDetailsCubit() : super(ItemDetailsState.initial());
 
-  void addToppings(double toppingsPrice) {
+  void manageToppings(item) {
+    List list = state.currentItems;
+    double totalPrice = state.totalPrice;
+    if (list.contains(item)) {
+      list.remove(item);
+      totalPrice -= item.toppingPrice;
+    } else {
+      list.add(item);
+      totalPrice += item.toppingPrice;
+    }
+
     emit(ItemDetailsState(
-      totalPrice: state.totalPrice + toppingsPrice,
+      totalPrice: totalPrice,
       toppinsList: state.toppinsList,
-      currentItens: state.currentItens,
+      currentItems: list,
     ));
   }
 }

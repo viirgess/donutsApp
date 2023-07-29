@@ -42,11 +42,9 @@ class _AddToppingsItemState extends State<AddToppingsItem> {
                       height: 30,
                       width: 30,
                       child: Checkbox(
-                        value: true,
-                        onChanged: (value) {
-                          //context
-                          // .read<CheckboxCubit>()
-                          // .changeValue(value ?? false);
+                        value: state.currentItems.contains(e),
+                        onChanged: (bool? value) {
+                          context.read<ItemDetailsCubit>().manageToppings(e);
                         },
                       ),
                     ),

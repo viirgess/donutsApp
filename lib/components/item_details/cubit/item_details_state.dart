@@ -1,19 +1,21 @@
 part of 'item_details_cubit.dart';
 
-class ItemDetailsState extends Equatable {
+class ItemDetailsState {
   final double totalPrice;
   final List toppinsList;
-  final List currentItens;
+  final List currentItems;
+
   const ItemDetailsState({
     required this.totalPrice,
     required this.toppinsList,
-    required this.currentItens,
+    required this.currentItems,
   });
 
   ItemDetailsState.initial()
       : totalPrice = 0,
         toppinsList = FakeData.fakeDataToppings,
-        currentItens = [];
+        currentItems = [];
+
   @override
-  List<Object> get props => [totalPrice, toppinsList, currentItens];
+  List<Object> get props => [totalPrice, toppinsList, currentItems];
 }
