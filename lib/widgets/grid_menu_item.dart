@@ -9,10 +9,10 @@ class GridMenuItem extends StatelessWidget {
       children: [
         Expanded(
           child: Container(
-            decoration:  BoxDecoration(
+            decoration: BoxDecoration(
               border: Border.all(color: Colors.black, width: 0.8),
             ),
-            height: 40.4,
+            height: 55,
             child: GridView.count(
               padding: EdgeInsets.zero,
               crossAxisCount: 6,

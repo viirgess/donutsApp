@@ -73,16 +73,21 @@ class DescriptionItem extends StatelessWidget {
             const GridImemDescription(),
             const AddToppingsItem(),
             const GridImemDescription(),
-            Container(
-              color: ColorSourceApp.white,
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                child: ButtonAddToBusketItem(
-                  totalPrice: 9,
-                ),
-              ),
+            BlocBuilder<ItemDetailsCubit, ItemDetailsState>(
+              builder: (context, state) {
+                return Container(
+                  color: ColorSourceApp.white,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30, vertical: 16),
+                    child: ButtonAddToBusketItem(
+                      totalPrice: state.totalPrice,
+                    ),
+                  ),
+                );
+              },
             ),
+            const GridImemDescription(),
           ],
         ),
       ),

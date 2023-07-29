@@ -5,10 +5,7 @@ import 'package:app/widgets/grid_menu_item.dart';
 import 'package:app/widgets/search_field.dart';
 import 'package:flutter/material.dart';
 
-
-
 class MenuPage extends StatefulWidget {
-  
   const MenuPage({super.key});
 
   @override
@@ -17,6 +14,7 @@ class MenuPage extends StatefulWidget {
 
 class _MenuPageState extends State<MenuPage> {
   int selectedItem = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,21 +43,24 @@ class _MenuPageState extends State<MenuPage> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               child: Row(
-
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Image.asset('images/menu.png', height: 39,),
-                  
+                  Image.asset(
+                    'images/menu.png',
+                    height: 39,
+                  ),
                   SearchWidget(),
-                  Image.asset('images/person.png', height: 28,),
+                  Image.asset(
+                    'images/person.png',
+                    height: 28,
+                  ),
                 ],
               ),
             ),
           ),
-         const GridMenuItem(),
+          const GridMenuItem(),
           GestureDetector(
             onTap: () {
-
               setState(() {
                 selectedItem = 1;
               });
@@ -67,16 +68,21 @@ class _MenuPageState extends State<MenuPage> {
             child: Container(
               color: ColorSourceApp.lightBlue,
               child: const Row(
-
                 children: [
                   CardMenuItem(
                     title: 'SPRINKLE-TOPPED BLUE CREAM DREAM',
                     description:
                         'A soft, fluffy pastry filled with rich blue cream and topped with colorful sweetness',
                     imagePath: 'images/dark_blue_donuts.png',
-                    
                   ),
-                  ButtonAddItem(buttonColor: ColorSourceApp.blue, description: 'A soft, fluffy pastry filled with rich blue cream and topped with colorful sweetness', imagePath: 'images/dark_blue_donuts.png', title: 'SPRINKLE-TOPPED BLUE CREAM DREAM', containerColor: ColorSourceApp.lightBlue,),
+                  ButtonAddItem(
+                    buttonColor: ColorSourceApp.blue,
+                    description:
+                        'A soft, fluffy pastry filled with rich blue cream and topped with colorful sweetness',
+                    imagePath: 'images/dark_blue_donuts.png',
+                    title: 'SPRINKLE-TOPPED BLUE CREAM DREAM',
+                    containerColor: ColorSourceApp.lightBlue,
+                  ),
                 ],
               ),
             ),
@@ -98,19 +104,26 @@ class _MenuPageState extends State<MenuPage> {
                         'A juicy, glazzd pastry that will satisfy your sweet tooth with every bite.',
                     imagePath: 'images/pink_donuts.png',
                   ),
-                  ButtonAddItem(buttonColor: ColorSourceApp.pink, description: 'A juicy, glazzd pastry that will satisfy your sweet tooth with every bite.', imagePath: 'images/pink_donuts.png', title: 'STRAWBERRY SPRINKLE SENSATION', containerColor: ColorSourceApp.lightPink,),
+                  ButtonAddItem(
+                    buttonColor: ColorSourceApp.pink,
+                    description:
+                        'A juicy, glazzd pastry that will satisfy your sweet tooth with every bite.',
+                    imagePath: 'images/pink_donuts.png',
+                    title: 'STRAWBERRY SPRINKLE SENSATION',
+                    containerColor: ColorSourceApp.lightPink,
+                  ),
                 ],
               ),
             ),
           ),
           const GridMenuItem(),
-           GestureDetector(
+          GestureDetector(
             onTap: () {
               setState(() {
                 selectedItem = 3;
               });
             },
-             child: Container(
+            child: Container(
               color: ColorSourceApp.lightGreen,
               child: const Row(
                 children: [
@@ -120,13 +133,19 @@ class _MenuPageState extends State<MenuPage> {
                         'A delicate pastry infused with the vibrant flavor of matcha green tea.',
                     imagePath: 'images/green_donuts.png',
                   ),
-                  ButtonAddItem(buttonColor: ColorSourceApp.brightGreen, description: 'A delicate pastry infused with the vibrant flavor of matcha green tea.', imagePath: 'images/green_donuts.png', title: 'MATCHA BLISS DONUT', containerColor: ColorSourceApp.lightGreen,),
+                  ButtonAddItem(
+                    buttonColor: ColorSourceApp.brightGreen,
+                    description:
+                        'A delicate pastry infused with the vibrant flavor of matcha green tea.',
+                    imagePath: 'images/green_donuts.png',
+                    title: 'MATCHA BLISS DONUT',
+                    containerColor: ColorSourceApp.lightGreen,
+                  ),
                 ],
               ),
-              
-                     ),
-           ),
-           const GridMenuItem(),
+            ),
+          ),
+          const GridMenuItem(),
           GestureDetector(
             onTap: () {
               setState(() {
@@ -143,7 +162,14 @@ class _MenuPageState extends State<MenuPage> {
                         'A hazelnut cream filling and coated with a delicious hazelnut glaze.',
                     imagePath: 'images/brown_donuts.png',
                   ),
-                  ButtonAddItem(buttonColor: ColorSourceApp.brown, description: 'A hazelnut cream filling and coated with a delicious hazelnut glaze.', imagePath: 'images/brown_donuts.png', title: 'HAZELNUT DELIGHT SPREAD', containerColor: ColorSourceApp.lightBrown,),
+                  ButtonAddItem(
+                    buttonColor: ColorSourceApp.brown,
+                    description:
+                        'A hazelnut cream filling and coated with a delicious hazelnut glaze.',
+                    imagePath: 'images/brown_donuts.png',
+                    title: 'HAZELNUT DELIGHT SPREAD',
+                    containerColor: ColorSourceApp.lightBrown,
+                  ),
                 ],
               ),
             ),
