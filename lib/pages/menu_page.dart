@@ -1,14 +1,9 @@
 import 'package:app/components/card_menu_item.dart';
-import 'package:app/pages/order_check.dart';
-import 'package:app/pages/profile.dart';
+import 'package:app/utils/color_source.dart';
 import 'package:app/widgets/button_add_item.dart';
 import 'package:app/widgets/grid_menu_item.dart';
 import 'package:app/widgets/search_field.dart';
 import 'package:flutter/material.dart';
-
-import '../components/fake_data/item_menu_fake_data.dart';
-import '../widgets/grid_first_page.dart';
-import 'description_item_page.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({super.key});
@@ -25,111 +20,161 @@ class _MenuPageState extends State<MenuPage> {
     return Scaffold(
       body: Column(
         children: [
-          const GridFirstPage(),
+          SizedBox(
+            height: 70,
+            child: GridView.count(
+              crossAxisCount: 6,
+              physics: const NeverScrollableScrollPhysics(),
+              children: List.generate(6, (index) {
+                return Container(
+                  width: 200,
+                  height: 200,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black, width: 0.5),
+                  ),
+                );
+              }),
+            ),
+          ),
           Container(
             decoration: BoxDecoration(
               border: Border.all(color: Colors.black, width: 1),
             ),
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => OrderCheck(),
-                        ),
-                      );
-                    },
-                    child: Image.asset(
-                      'images/menu.png',
-                      height: 39,
-                    ),
+                  Image.asset(
+                    'images/menu.png',
+                    height: 39,
                   ),
                   SearchWidget(),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Profile(),
-                        ),
-                      );
-                    },
-                    child: Image.asset(
-                      'images/person.png',
-                      height: 28,
-                    ),
+                  Image.asset(
+                    'images/person.png',
+                    height: 28,
                   ),
                 ],
               ),
             ),
           ),
-          //const GridMenuItem(),
-          Expanded(
-            child: ListView.builder(
-              shrinkWrap: true,
-              physics: const AlwaysScrollableScrollPhysics(),
-              itemCount: ItemMenuFakeData.FakeDataItemMenu.length,
-              itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => DescriptionItem(
-                              title: ItemMenuFakeData
-                                  .FakeDataItemMenu[index].title,
-                              description: ItemMenuFakeData
-                                  .FakeDataItemMenu[index].description,
-                              imagePath: ItemMenuFakeData
-                                  .FakeDataItemMenu[index].imagePath,
-                              containerColor: ItemMenuFakeData
-                                  .FakeDataItemMenu[index].backgroundColor,
-                            ),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        color: ItemMenuFakeData
-                            .FakeDataItemMenu[index].backgroundColor,
-                        child: Row(
-                          children: [
-                            CardMenuItem(
-                              title: ItemMenuFakeData
-                                  .FakeDataItemMenu[index].title,
-                              description: ItemMenuFakeData
-                                  .FakeDataItemMenu[index].description,
-                              imagePath: ItemMenuFakeData
-                                  .FakeDataItemMenu[index].imagePath,
-                            ),
-                            ButtonAddItem(
-                              buttonColor: ItemMenuFakeData
-                                  .FakeDataItemMenu[index].buttonColor,
-                              title: ItemMenuFakeData
-                                  .FakeDataItemMenu[index].title,
-                              description: ItemMenuFakeData
-                                  .FakeDataItemMenu[index].description,
-                              imagePath: ItemMenuFakeData
-                                  .FakeDataItemMenu[index].imagePath,
-                              containerColor: ItemMenuFakeData
-                                  .FakeDataItemMenu[index].backgroundColor,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    const GridMenuItem(), // Add GridMenuItem here as a child of the Column
-                  ],
-                );
-              },
+          const GridMenuItem(),
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                selectedItem = 1;
+              });
+            },
+            child: Container(
+              color: ColorSourceApp.lightBlue,
+              child: const Row(
+                children: [
+                  CardMenuItem(
+                    title: 'SPRINKLE-TOPPED BLUE CREAM DREAM',
+                    description:
+                        'A soft, fluffy pastry filled with rich blue cream and topped with colorful sweetness',
+                    imagePath: 'images/dark_blue_donuts.png',
+                  ),
+                  ButtonAddItem(
+                    buttonColor: ColorSourceApp.blue,
+                    description:
+                        'A soft, fluffy pastry filled with rich blue cream and topped with colorful sweetness',
+                    imagePath: 'images/dark_blue_donuts.png',
+                    title: 'SPRINKLE-TOPPED BLUE CREAM DREAM',
+                    containerColor: ColorSourceApp.lightBlue,
+                  ),
+                ],
+              ),
             ),
           ),
+          const GridMenuItem(),
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                selectedItem = 2;
+              });
+            },
+            child: Container(
+              color: ColorSourceApp.lightPink,
+              child: const Row(
+                children: [
+                  CardMenuItem(
+                    title: 'STRAWBERRY SPRINKLE SENSATION',
+                    description:
+                        'A juicy, glazzd pastry that will satisfy your sweet tooth with every bite.',
+                    imagePath: 'images/pink_donuts.png',
+                  ),
+                  ButtonAddItem(
+                    buttonColor: ColorSourceApp.pink,
+                    description:
+                        'A juicy, glazzd pastry that will satisfy your sweet tooth with every bite.',
+                    imagePath: 'images/pink_donuts.png',
+                    title: 'STRAWBERRY SPRINKLE SENSATION',
+                    containerColor: ColorSourceApp.lightPink,
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const GridMenuItem(),
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                selectedItem = 3;
+              });
+            },
+            child: Container(
+              color: ColorSourceApp.lightGreen,
+              child: const Row(
+                children: [
+                  CardMenuItem(
+                    title: 'MATCHA BLISS DONUT',
+                    description:
+                        'A delicate pastry infused with the vibrant flavor of matcha green tea.',
+                    imagePath: 'images/green_donuts.png',
+                  ),
+                  ButtonAddItem(
+                    buttonColor: ColorSourceApp.brightGreen,
+                    description:
+                        'A delicate pastry infused with the vibrant flavor of matcha green tea.',
+                    imagePath: 'images/green_donuts.png',
+                    title: 'MATCHA BLISS DONUT',
+                    containerColor: ColorSourceApp.lightGreen,
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const GridMenuItem(),
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                selectedItem = 4;
+              });
+            },
+            child: Container(
+              color: ColorSourceApp.lightBrown,
+              child: const Row(
+                children: [
+                  CardMenuItem(
+                    title: 'HAZELNUT DELIGHT SPREAD',
+                    description:
+                        'A hazelnut cream filling and coated with a delicious hazelnut glaze.',
+                    imagePath: 'images/brown_donuts.png',
+                  ),
+                  ButtonAddItem(
+                    buttonColor: ColorSourceApp.brown,
+                    description:
+                        'A hazelnut cream filling and coated with a delicious hazelnut glaze.',
+                    imagePath: 'images/brown_donuts.png',
+                    title: 'HAZELNUT DELIGHT SPREAD',
+                    containerColor: ColorSourceApp.lightBrown,
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const GridMenuItem(),
         ],
       ),
     );
