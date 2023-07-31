@@ -12,7 +12,7 @@ class GridMenuItem extends StatelessWidget {
             decoration: BoxDecoration(
               border: Border.all(color: Colors.black, width: 0.8),
             ),
-            height: 55,
+            height: 50,
             child: GridView.count(
               padding: EdgeInsets.zero,
               crossAxisCount: 6,
