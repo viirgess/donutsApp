@@ -17,7 +17,7 @@ class CardMenuItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(
-        vertical: 10,
+        vertical: 12,
         horizontal: 5,
       ),
       child: Row(
