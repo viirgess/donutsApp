@@ -9,14 +9,15 @@ class TextTitleDonuts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
       child: Stack(
         children: [
           Text(
             'DONUTS SO GOOD YOU\'LL FORGET YOUR NAME',
             style: TextStyleApp.height24.copyWith(
-              color: ColorSourceApp.pink,
-              fontSize: 43,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+              fontSize: 42,
             ),
             textAlign: TextAlign.center,
           ),
@@ -28,7 +29,7 @@ class TextTitleDonuts extends StatelessWidget {
               foreground: Paint()
                 ..style = PaintingStyle.stroke
                 ..strokeWidth = 1
-                ..color = Colors.black,
+                ..color = ColorSourceApp.pink,
             ),
             textAlign: TextAlign.center,
           ),

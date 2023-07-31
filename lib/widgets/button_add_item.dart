@@ -13,7 +13,8 @@ class ButtonAddItem extends StatelessWidget {
     required this.buttonColor,
     required this.title,
     required this.description,
-    required this.imagePath, required this.containerColor,
+    required this.imagePath,
+    required this.containerColor,
   });
 
   @override

@@ -1,6 +1,7 @@
 import 'package:app/pages/menu_page.dart';
 import 'package:flutter/material.dart';
 
+import '../pages/order_check.dart';
 import '../utils/color_source.dart';
 
 class ButtonAddToBusketItem extends StatelessWidget {
@@ -45,7 +46,7 @@ class ButtonAddToBusketItem extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const MenuPage()),
+                  MaterialPageRoute(builder: (context) => const OrderCheck()),
                 );
                 debugPrint('Received click');
               },

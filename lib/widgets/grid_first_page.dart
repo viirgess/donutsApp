@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class GridMenuItem extends StatelessWidget {
-  const GridMenuItem({super.key});
+class GridFirstPage extends StatelessWidget {
+  const GridFirstPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class GridMenuItem extends StatelessWidget {
             decoration: BoxDecoration(
               border: Border.all(color: Colors.black, width: 0.8),
             ),
-            height: 50,
+            height: 67,
             child: GridView.count(
               padding: EdgeInsets.zero,
               crossAxisCount: 6,
