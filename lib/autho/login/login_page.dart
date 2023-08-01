@@ -1,5 +1,6 @@
 import 'package:app/autho/register/register.dart';
-import 'package:app/cubit/register/user_data_cubit.dart';
+import 'package:app/cubit/login/login_page_cubit.dart';
+import 'package:app/cubit/register/register_page_cubit.dart';
 import 'package:app/pages/menu_page.dart';
 import 'package:app/widgets/field_app.dart';
 import 'package:flutter/material.dart';
@@ -17,9 +18,9 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<UserDataCubit>(
-      create: (context) => UserDataCubit(),
-      child: BlocBuilder<UserDataCubit, UserDataState>(
+    return BlocProvider<LoginPageCubit>(
+      create: (context) => LoginPageCubit(),
+      child: BlocBuilder<LoginPageCubit, LoginPageState>(
         builder: (context, state) {
           return Scaffold(
             backgroundColor: ColorSourceApp.white,
@@ -53,7 +54,7 @@ class LoginPage extends StatelessWidget {
                         svgIconPath: 'images/profile.svg',
                         isPassword: false,
                         inputText: (email) =>
-                            context.read<UserDataCubit>().email(email),
+                            context.read<LoginPageCubit>().email(email),
                       ),
                       const SizedBox(
                         height: 12,
@@ -63,7 +64,7 @@ class LoginPage extends StatelessWidget {
                         svgIconPath: 'images/password.svg',
                         isPassword: true,
                         inputText: (password) =>
-                            context.read<UserDataCubit>().password(password),
+                            context.read<LoginPageCubit>().password(password),
                       ),
                     ],
                   ),
@@ -105,7 +106,7 @@ class LoginPage extends StatelessWidget {
                       style: TextStyleApp.height18
                           .copyWith(color: ColorSourceApp.middleGrey),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 7,
                     ),
                     GestureDetector(
@@ -125,7 +126,7 @@ class LoginPage extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 const Spacer(),

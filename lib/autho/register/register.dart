@@ -1,4 +1,4 @@
-import 'package:app/cubit/register/user_data_cubit.dart';
+import 'package:app/cubit/register/register_page_cubit.dart';
 import 'package:app/pages/menu_page.dart';
 import 'package:app/utils/color_source.dart';
 import 'package:app/utils/text_style.dart';
@@ -14,9 +14,9 @@ class RegisterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<UserDataCubit>(
-      create: (context) => UserDataCubit(),
-      child: BlocBuilder<UserDataCubit, UserDataState>(
+    return BlocProvider<RegisterPageCubit>(
+      create: (context) => RegisterPageCubit(),
+      child: BlocBuilder<RegisterPageCubit, RegisterPageState>(
         builder: (context, state) {
           return Scaffold(
             body: Column(
@@ -49,8 +49,9 @@ class RegisterPage extends StatelessWidget {
                         labelText: 'Name',
                         svgIconPath: 'images/profile.svg',
                         isPassword: false,
-                        inputText: (name) =>
-                            context.read<UserDataCubit>().inputUsername(name),
+                        inputText: (name) => context
+                            .read<RegisterPageCubit>()
+                            .inputUsername(name),
                       ),
                       const SizedBox(
                         height: 12,
@@ -59,8 +60,9 @@ class RegisterPage extends StatelessWidget {
                         labelText: 'Password',
                         svgIconPath: 'images/password.svg',
                         isPassword: true,
-                        inputText: (password) =>
-                            context.read<UserDataCubit>().password(password),
+                        inputText: (password) => context
+                            .read<RegisterPageCubit>()
+                            .password(password),
                       ),
                       const SizedBox(
                         height: 12,
@@ -69,7 +71,7 @@ class RegisterPage extends StatelessWidget {
                         labelText: 'Email',
                         svgIconPath: 'images/email.svg',
                         inputText: (email) =>
-                            context.read<UserDataCubit>().email(email),
+                            context.read<RegisterPageCubit>().email(email),
                         isPassword: false,
                       ),
                       const SizedBox(
@@ -80,7 +82,7 @@ class RegisterPage extends StatelessWidget {
                         svgIconPath: 'images/phone.svg',
                         isPassword: false,
                         inputText: (phone) =>
-                            context.read<UserDataCubit>().phone(phone),
+                            context.read<RegisterPageCubit>().phone(phone),
                       ),
                       const SizedBox(
                         height: 12,
