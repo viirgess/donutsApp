@@ -13,7 +13,7 @@ class TextTitleDonuts extends StatelessWidget {
       child: Stack(
         children: [
           Text(
-            'DONUTS SO GOOD YOU\'LL FORGET YOUR NAME',
+            'DONUT CLUB',
             style: TextStyleApp.height24.copyWith(
               fontWeight: FontWeight.bold,
               color: Colors.black,
@@ -22,7 +22,7 @@ class TextTitleDonuts extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           Text(
-            'DONUTS SO GOOD YOU\'LL FORGET YOUR NAME',
+            'DONUT CLUB',
             style: TextStyle(
               fontSize: 43,
               fontFamily: 'Chocolate Bar Demo',

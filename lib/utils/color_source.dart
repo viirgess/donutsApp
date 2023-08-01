@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+
 class ColorSourceApp {
   static const pink = Color(0xFFFF5ABD);
   static const black = Color(0xFF000000);
@@ -13,5 +15,14 @@ class ColorSourceApp {
   static const blue = Color(0xFF00ffff);
   static const brightGreen = Color(0xFF00ff00);
   static const brown = Color(0xFFa5492a);
+  static const darkGrey = Color(0xFF2E2E2E);
+  static const lightGrey = Color(0xFF2B2B2B);
+  static const middleGrey = Color(0xFF262626);
+  static const veryLightGrey = Color(0xFFC8C8C8);
+  static const pinkGradient = LinearGradient(
+    colors: [Color(0xFFFF79D1), Color(0xFFFFBCEC)],
+    stops: [0.0, 1.0],
+  );
 }
-//				a5492a
+//background: ##FF79D1
+//#C8C8C8   #FFBCEC
