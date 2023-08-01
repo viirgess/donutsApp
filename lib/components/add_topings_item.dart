@@ -35,14 +35,14 @@ class _AddToppingsItemState extends State<AddToppingsItem> {
                   ),
                 ),
               ),
-              ...state.toppinsList.map((e) {
+              ...state.toppingsList.map((e) {
                 return Row(
                   children: [
                     SizedBox(
                       height: 30,
                       width: 30,
                       child: Checkbox(
-                        value: state.currentItems.contains(e),
+                        value: state.currentItem.contains(e),
                         onChanged: (bool? value) {
                           context.read<ItemDetailsCubit>().manageToppings(e);
                         },

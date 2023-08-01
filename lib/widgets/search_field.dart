@@ -22,8 +22,11 @@ class _SearchWidgetState extends State<SearchWidget> {
       child: TextField(
         controller: _searchController,
         decoration: InputDecoration(
-          hintText: 'Search for donuts, toppings', 
-          prefixIcon: const Icon(Icons.search, color: Colors.black,),
+          hintText: 'Search for donuts, toppings',
+          prefixIcon: const Icon(
+            Icons.search,
+            color: Colors.black,
+          ),
           enabledBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: Colors.black),
             borderRadius: BorderRadius.circular(30),
@@ -34,8 +37,7 @@ class _SearchWidgetState extends State<SearchWidget> {
           ),
         ),
         onChanged: (value) {
-          setState(() {
-          });
+          setState(() {});
         },
       ),
     );
