@@ -1,10 +1,13 @@
-import 'package:app/cubit/register/user_data_cubit.dart';
+import 'package:app/cubit/auth/auth_cubit.dart';
+import 'package:app/cubit/register/register_page_cubit.dart';
+import 'package:app/service/shared_preference.dart';
 import 'package:get_it/get_it.dart';
 
-final locator = GetIt.instance;
+GetIt locator = GetIt.instance;
 
-void setup() {
-  locator.registerSingleton<UserDataCubit>(UserDataCubit());
-
-// Alternatively you could write it if you don't like global variables
+setup() {
+  locator
+    ..registerSingleton<SharedPreferencesService>(SharedPreferencesService())
+    ..registerSingleton<RegisterPageCubit>(RegisterPageCubit())
+    ..registerSingleton<AuthCubit>(AuthCubit());
 }
