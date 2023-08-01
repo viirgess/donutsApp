@@ -44,8 +44,7 @@ class _FieldAppState extends State<FieldApp> {
         ],
       ),
       child: TextField(
-        onChanged: widget.inputText,
-        // onChanged: (value) => (value),
+        onChanged: (value) => (value),
         decoration: InputDecoration(
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
