@@ -1,8 +1,10 @@
 import 'package:app/service/locator.dart';
-import 'package:app/service/shared_preference.dart';
+import 'package:app/storage/shared_preferences_service.dart';
 import 'package:app/utils/fire_key.dart';
+import 'package:app/widgets/button_next.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 part 'register_page_state.dart';
@@ -10,48 +12,52 @@ part 'register_page_state.dart';
 RegisterPageCubit block = RegisterPageCubit();
 
 class RegisterPageCubit extends Cubit<RegisterPageState> {
-  RegisterPageCubit() : super(RegisterPageState.initial());
+  final FirebaseAuth firebaseAuth;
+  final SharedPreferencesService _sharedPreferencesService;
 
-  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  RegisterPageCubit()
+      : firebaseAuth = FirebaseAuth.instance,
+        _sharedPreferencesService = SharedPreferencesService(),
+        super(RegisterPageState.initial());
 
-  final SharedPreferencesService _sharedPreferencesService =
-      locator<SharedPreferencesService>();
+  inputName(String newName) {
+    emit(
+      RegisterPageState(
+          name: newName,
+          email: state.email,
+          password: state.password,
+          phone: state.phone,
+          buttonStatus: ButtonStatus.active),
+    );
+  }
 
-  void inputUsername(String username) {
-    print(username);
+  inputPassword(String newPassword) {
     emit(RegisterPageState(
-      name: username,
-      password: state.password,
+      name: state.name,
+      password: newPassword,
       email: state.email,
       phone: state.phone,
+      buttonStatus: ButtonStatus.active,
     ));
   }
 
-  void email(String email) {
-    print(email);
+  inputEmail(String newEmail) {
     emit(RegisterPageState(
-        name: state.name,
-        password: state.password,
-        email: email,
-        phone: state.phone));
+      name: state.name,
+      password: state.password,
+      email: newEmail,
+      phone: state.phone,
+      buttonStatus: ButtonStatus.active,
+    ));
   }
 
-  void password(String password) {
-    print(password);
-    emit(RegisterPageState(
-        name: state.name,
-        password: password,
-        email: state.email,
-        phone: state.phone));
-  }
-
-  void phone(String phone) {
-    print(phone);
+  inputPhone(String newPhone) {
     emit(RegisterPageState(
       name: state.name,
       password: state.password,
       email: state.email,
-      phone: phone,
+      phone: newPhone,
+      buttonStatus: ButtonStatus.active,
     ));
   }
 
@@ -60,7 +66,8 @@ class RegisterPageCubit extends Cubit<RegisterPageState> {
         name: state.name,
         email: state.email,
         password: state.password,
-        phone: state.phone));
+        phone: state.phone,
+        buttonStatus: ButtonStatus.active));
     try {
       final uid = await firebaseAuth.createUserWithEmailAndPassword(
           email: state.email, password: state.password);
@@ -70,13 +77,15 @@ class RegisterPageCubit extends Cubit<RegisterPageState> {
           name: state.name,
           email: state.email,
           password: state.password,
-          phone: state.phone));
+          phone: state.phone,
+          buttonStatus: ButtonStatus.active));
     } on FirebaseAuthException catch (e) {
       emit(RegisterPageBlock(
         name: state.name,
         email: state.email,
         password: state.password,
         phone: state.phone,
+        buttonStatus: ButtonStatus.unActive,
       ));
     }
   }

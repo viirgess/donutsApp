@@ -1,9 +1,8 @@
 import 'package:app/service/locator.dart';
-import 'package:app/service/shared_preference.dart';
+import 'package:app/storage/shared_preferences_service.dart';
 import 'package:app/utils/fire_key.dart';
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
+import 'package:meta/meta.dart';
 
 part 'auth_state.dart';
 

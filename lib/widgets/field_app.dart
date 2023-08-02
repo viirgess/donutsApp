@@ -6,14 +6,17 @@ import 'package:flutter_svg/svg.dart';
 class FieldApp extends StatefulWidget {
   final String labelText;
   final String svgIconPath;
-  final Function(String) inputText;
+
   final bool isPassword;
+  final Function(String) onChanged;
+  final String initialValue;
   const FieldApp({
     super.key,
     required this.labelText,
     required this.svgIconPath,
-    required this.inputText,
     required this.isPassword,
+    required this.onChanged,
+    this.initialValue = '',
   });
 
   @override
@@ -21,7 +24,18 @@ class FieldApp extends StatefulWidget {
 }
 
 class _FieldAppState extends State<FieldApp> {
+  late TextEditingController controller;
   bool isShowPassword = false;
+
+  @override
+  void initState() {
+    controller = TextEditingController(text: widget.initialValue);
+    super.initState();
+    void dispose() {
+      controller.dispose();
+      super.dispose();
+    }
+  }
 
   void changePasswordState() {
     isShowPassword = !isShowPassword;
@@ -44,7 +58,10 @@ class _FieldAppState extends State<FieldApp> {
         ],
       ),
       child: TextField(
-        onChanged: widget.inputText,
+        controller: controller,
+        onChanged: (value) {
+          widget.onChanged(value); // Call the callback with the updated value
+        },
         decoration: InputDecoration(
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 20, vertical: 10),

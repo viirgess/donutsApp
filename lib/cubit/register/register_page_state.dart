@@ -5,48 +5,62 @@ class RegisterPageState extends Equatable {
   final String email;
   final String password;
   final String phone;
+  final ButtonStatus buttonStatus;
 
-  const RegisterPageState({
+  RegisterPageState({
     required this.name,
     required this.email,
     required this.password,
     required this.phone,
+    required this.buttonStatus,
   });
 
-  const RegisterPageState.initial()
+  RegisterPageState.initial()
       : name = '',
         email = '',
         password = '',
-        phone = '';
+        phone = '',
+        buttonStatus = ButtonStatus.unActive;
+
+  bool get isValid =>
+      name.isNotEmpty &&
+      email.isNotEmpty &&
+      password.isNotEmpty &&
+      phone.isNotEmpty &&
+      buttonStatus == ButtonStatus.active;
 
   @override
-  List<Object> get props => [name, email, password, phone];
+  List<Object> get props => [name, email, password, phone, buttonStatus];
 }
 
 class RegisterPageDone extends RegisterPageState {
   RegisterPageDone({
     required String name,
-    required String email,
     required String password,
+    required String email,
     required String phone,
+    required ButtonStatus buttonStatus,
   }) : super(
           name: name,
-          email: email,
           password: password,
+          email: email,
           phone: phone,
+          buttonStatus: buttonStatus,
         );
 }
 
 class RegisterPageBlock extends RegisterPageState {
   RegisterPageBlock({
     required String name,
-    required String email,
     required String password,
+    required String email,
     required String phone,
+    required ButtonStatus buttonStatus,
   }) : super(
           name: name,
-          email: email,
           password: password,
+          email: email,
           phone: phone,
+          buttonStatus: buttonStatus,
         );
 }
