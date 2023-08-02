@@ -37,16 +37,18 @@ class RegisterPage extends StatelessWidget {
               body: Column(
                 children: [
                   const SizedBox(
-                    height: 50,
+                    height: 70,
                   ),
-                  // const GridFirstPage(),
                   TextTitleDonuts(),
                   Text(
                     'DONUT WORRY BE HAPPY',
                     style: TextStyleApp.height16
                         .copyWith(color: ColorSourceApp.darkGrey),
                   ),
-                  const Spacer(),
+                  const SizedBox(
+                    height: 20,
+                  ),
+
                   SvgPicture.asset(
                     'images/donutTtile.svg',
                     height: 140,
@@ -56,8 +58,8 @@ class RegisterPage extends StatelessWidget {
                       style: TextStyleApp.height18
                           .copyWith(color: ColorSourceApp.middleGrey)),
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 30, vertical: 26),
+                    padding: const EdgeInsets.only(
+                        right: 30, left: 30, top: 10, bottom: 10),
                     child: Column(
                       children: [
                         FieldApp(
@@ -100,9 +102,6 @@ class RegisterPage extends StatelessWidget {
                           onChanged: (newPhone) => context
                               .read<RegisterPageCubit>()
                               .inputPhone(newPhone),
-                        ),
-                        const SizedBox(
-                          height: 12,
                         ),
                       ],
                     ),
@@ -157,9 +156,6 @@ class RegisterPage extends StatelessWidget {
                         ],
                       )
                     ],
-                  ),
-                  const SizedBox(
-                    height: 30,
                   ),
                   const Spacer(),
                 ],

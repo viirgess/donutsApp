@@ -42,7 +42,7 @@ class LoginPage extends StatelessWidget {
               body: Column(
                 children: [
                   const SizedBox(
-                    height: 50,
+                    height: 70,
                   ),
                   // const GridFirstPage(),
                   TextTitleDonuts(),
@@ -51,7 +51,10 @@ class LoginPage extends StatelessWidget {
                     style: TextStyleApp.height16
                         .copyWith(color: ColorSourceApp.darkGrey),
                   ),
-                  const Spacer(),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  //const Spacer(),
                   SvgPicture.asset(
                     'images/donutTtile.svg',
                     height: 140,
@@ -61,7 +64,8 @@ class LoginPage extends StatelessWidget {
                       style: TextStyleApp.height18
                           .copyWith(color: ColorSourceApp.middleGrey)),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 26),
+                    padding: const EdgeInsets.only(
+                        right: 30, left: 30, top: 20, bottom: 10),
                     child: Column(
                       children: [
                         FieldApp(
@@ -89,7 +93,7 @@ class LoginPage extends StatelessWidget {
                   Text(
                     'Forgot your password?',
                     style: TextStyleApp.height15
-                        .copyWith(color: ColorSourceApp.lightGrey),
+                        .copyWith(color: ColorSourceApp.veryLightGrey),
                   ),
                   Spacer(),
                   GestureDetector(
@@ -128,22 +132,29 @@ class LoginPage extends StatelessWidget {
                         style: TextStyleApp.height18
                             .copyWith(color: ColorSourceApp.middleGrey),
                       ),
-                      const SizedBox(
-                        height: 7,
-                      ),
                       GestureDetector(
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => RegisterPage(),
+                              builder: (context) => const RegisterPage(),
                             ),
                           );
                         },
-                        child: Text(
-                          'Create',
-                          style: TextStyleApp.height18
-                              .copyWith(color: ColorSourceApp.middleGrey),
+                        child: DecoratedBox(
+                          decoration: const BoxDecoration(
+                            border: Border(
+                              bottom: BorderSide(
+                                color: Colors.black,
+                                width: 1.0,
+                              ),
+                            ),
+                          ),
+                          child: Text(
+                            'Create',
+                            style: TextStyleApp.height18
+                                .copyWith(color: ColorSourceApp.middleGrey),
+                          ),
                         ),
                       )
                     ],

@@ -26,3 +26,4 @@ class ColorSourceApp {
 }
 //background: ##FF79D1
 //#C8C8C8   #FFBCEC
+//background: #BEBEBE;
