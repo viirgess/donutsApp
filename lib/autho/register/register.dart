@@ -34,6 +34,7 @@ class RegisterPage extends StatelessWidget {
         child: BlocBuilder<RegisterPageCubit, RegisterPageState>(
           builder: (context, state) {
             return Scaffold(
+              resizeToAvoidBottomInset: false,
               body: Column(
                 children: [
                   const SizedBox(
@@ -107,33 +108,23 @@ class RegisterPage extends StatelessWidget {
                     ),
                   ),
                   //const Spacer(),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MenuPage(),
-                        ),
-                      );
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text('Create',
-                            style: TextStyleApp.height25
-                                .copyWith(color: ColorSourceApp.middleGrey)),
-                        const SizedBox(
-                          width: 14,
-                        ),
-                        ButtonNext(
-                          callBack: () =>
-                              context.read<RegisterPageCubit>().register(),
-                          isEnable: state.isValid,
-                          status: state.buttonStatus,
-                        ),
-                      ],
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text('Create',
+                          style: TextStyleApp.height25
+                              .copyWith(color: ColorSourceApp.middleGrey)),
+                      const SizedBox(
+                        width: 14,
+                      ),
+                      ButtonNext(
+                        callBack: () =>
+                            context.read<RegisterPageCubit>().register(),
+                        isEnable: state.isValid,
+                        status: state.buttonStatus,
+                      ),
+                    ],
                   ),
                   const Spacer(),
                   Column(

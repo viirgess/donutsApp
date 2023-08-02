@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 import 'cubit/autho/auth_cubit.dart';
 import 'firebase_options.dart';
+import 'menu/menu_page_main.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,6 +19,7 @@ Future<void> main() async {
   authCubit.init();
   runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: FirstScreenPage(),
+    home: MenuPageMain(),
+    //home: FirstScreenPage(),
   ));
 }
