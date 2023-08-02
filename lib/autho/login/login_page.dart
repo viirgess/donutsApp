@@ -1,6 +1,7 @@
 import 'package:app/autho/register/register.dart';
 import 'package:app/cubit/login/login_page_cubit.dart';
 import 'package:app/cubit/register/register_page_cubit.dart';
+import 'package:app/menu/menu_page_main.dart';
 import 'package:app/pages/first_screen_page.dart';
 import 'package:app/pages/menu_page.dart';
 import 'package:app/widgets/field_app.dart';
@@ -26,7 +27,7 @@ class LoginPage extends StatelessWidget {
           if (state is UserPageIsLogin) {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const MenuPage()),
+              MaterialPageRoute(builder: (context) => const MenuPageMain()),
             );
           } else if (state is UserPageNotLogin) {
             Navigator.push(
@@ -38,14 +39,15 @@ class LoginPage extends StatelessWidget {
         child: BlocBuilder<LoginPageCubit, LoginPageState>(
           builder: (context, state) {
             return Scaffold(
+              resizeToAvoidBottomInset: false,
               backgroundColor: ColorSourceApp.white,
               body: Column(
+                //mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   const SizedBox(
                     height: 70,
                   ),
-                  // const GridFirstPage(),
-                  TextTitleDonuts(),
+                  const TextTitleDonuts(),
                   Text(
                     'DONUT WORRY BE HAPPY',
                     style: TextStyleApp.height16
@@ -96,33 +98,22 @@ class LoginPage extends StatelessWidget {
                         .copyWith(color: ColorSourceApp.veryLightGrey),
                   ),
                   Spacer(),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MenuPage(),
-                        ),
-                      );
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text('Sing in',
-                            style: TextStyleApp.height25
-                                .copyWith(color: ColorSourceApp.middleGrey)),
-                        const SizedBox(
-                          width: 14,
-                        ),
-                        ButtonNext(
-                          callBack: () =>
-                              context.read<LoginPageCubit>().login(),
-                          isEnable: state.isValid,
-                          status: state.buttonStatus,
-                        ),
-                      ],
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text('Sing in',
+                          style: TextStyleApp.height25
+                              .copyWith(color: ColorSourceApp.middleGrey)),
+                      const SizedBox(
+                        width: 14,
+                      ),
+                      ButtonNext(
+                        callBack: () => context.read<LoginPageCubit>().login(),
+                        isEnable: state.isValid,
+                        status: state.buttonStatus,
+                      ),
+                    ],
                   ),
                   const Spacer(),
                   Column(

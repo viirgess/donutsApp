@@ -6,13 +6,13 @@ class ItemDescriptionCard extends StatelessWidget {
   final String imagePath;
   final String title;
   final String description;
-  
 
-  const ItemDescriptionCard(
-      {super.key,
-      required this.imagePath,
-      required this.title,
-      required this.description, });
+  const ItemDescriptionCard({
+    super.key,
+    required this.imagePath,
+    required this.title,
+    required this.description,
+  });
 
   @override
   Widget build(BuildContext context) {

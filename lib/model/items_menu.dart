@@ -7,13 +7,14 @@ class ItemDescription {
   final String title;
   final String description;
   final Color buttonColor;
-  final Color backgroundColor;
+  final Color imageColor;
+  final String price;
 
-  ItemDescription({
-    required this.imagePath,
-    required this.title,
-    required this.description,
-    required this.backgroundColor,
-    required this.buttonColor,
-  });
+  ItemDescription(
+      {required this.imagePath,
+      required this.title,
+      required this.description,
+      required this.imageColor,
+      required this.buttonColor,
+      required this.price});
 }

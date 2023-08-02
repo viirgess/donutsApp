@@ -9,21 +9,24 @@ class ItemMenuFakeData {
         description:
             'A soft, fluffy pastry filled with rich blue cream and topped with colorful sweetness',
         imagePath: 'images/dark_blue_donuts.png',
-        backgroundColor: ColorSourceApp.lightBlue,
+        imageColor: ColorSourceApp.lightBlue,
+        price: '\$12,55',
         buttonColor: ColorSourceApp.blue),
     ItemDescription(
         title: 'STRAWBERRY SPRINKLE SENSATIO',
         description:
             'A juicy, glazzd pastry that will satisfy your sweet tooth with every bite.',
         imagePath: 'images/pink_donuts.png',
-        backgroundColor: ColorSourceApp.lightPink,
+        imageColor: ColorSourceApp.lightPink,
+        price: '\$9.99',
         buttonColor: ColorSourceApp.pink),
     ItemDescription(
       title: 'MATCHA BLISS DONUT',
       description:
           'A delicate pastry infused with the vibrant flavor of matcha green tea.',
       imagePath: 'images/green_donuts.png',
-      backgroundColor: ColorSourceApp.lightGreen,
+      imageColor: ColorSourceApp.lightGreen,
+      price: '\$16.99',
       buttonColor: ColorSourceApp.lightGreen,
     ),
     ItemDescription(
@@ -31,21 +34,24 @@ class ItemMenuFakeData {
         description:
             'A hazelnut cream filling and coated with a delicious hazelnut glaze.',
         imagePath: 'images/brown_donuts.png',
-        backgroundColor: ColorSourceApp.lightBrown,
+        imageColor: ColorSourceApp.lightBrown,
+        price: '\$8.99',
         buttonColor: ColorSourceApp.brown),
     ItemDescription(
         title: 'HAZELNUT DELIGHT SPREAD',
         description:
             'A hazelnut cream filling and coated with a delicious hazelnut glaze.',
         imagePath: 'images/brown_donuts.png',
-        backgroundColor: ColorSourceApp.lightBrown,
+        imageColor: ColorSourceApp.lightBrown,
+        price: '\$11.99',
         buttonColor: ColorSourceApp.brown),
     ItemDescription(
       title: 'MATCHA BLISS DONUT',
       description:
           'A delicate pastry infused with the vibrant flavor of matcha green tea.',
       imagePath: 'images/green_donuts.png',
-      backgroundColor: ColorSourceApp.lightGreen,
+      imageColor: ColorSourceApp.lightGreen,
+      price: '\$12.99',
       buttonColor: ColorSourceApp.lightGreen,
     ),
     ItemDescription(
@@ -53,7 +59,8 @@ class ItemMenuFakeData {
         description:
             'A juicy, glazzd pastry that will satisfy your sweet tooth with every bite.',
         imagePath: 'images/pink_donuts.png',
-        backgroundColor: ColorSourceApp.lightPink,
+        price: '\$10.99',
+        imageColor: ColorSourceApp.lightPink,
         buttonColor: ColorSourceApp.pink),
   ];
 }

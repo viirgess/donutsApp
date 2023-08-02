@@ -1,4 +1,5 @@
 import 'package:app/components/item_description_card.dart';
+import 'package:app/menu/widget/app_bar.dart';
 import 'package:app/utils/color_source.dart';
 import 'package:app/utils/text_style.dart';
 import 'package:app/components/add_topings_item.dart';
@@ -27,59 +28,96 @@ class DescriptionItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              icon: const Icon(
+                Icons.arrow_back_ios,
+                color: ColorSourceApp.black,
+              ),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+            IconButton(
+              icon: const Icon(
+                Icons.shopping_cart_outlined,
+                color: ColorSourceApp.black,
+              ),
+              onPressed: () {},
+            ),
+          ],
+        ),
+        toolbarHeight: 40,
+        backgroundColor: ColorSourceApp.white,
+      ),
+
+      backgroundColor: containerColor,
+      // appBar: AppBarMenu(),
       body: BlocProvider<ItemDetailsCubit>(
         create: (context) => ItemDetailsCubit(),
         child: Column(
           children: [
-            const GridImemDescription(),
             Container(
+              width: double.infinity,
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.black, width: 1),
+                color: ColorSourceApp.white,
+                borderRadius: const BorderRadius.only(
+                  bottomRight: Radius.circular(180),
+                  bottomLeft: Radius.circular(180),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.3),
+                    offset: const Offset(0, 3),
+                    blurRadius: 5,
+                    spreadRadius: 0,
+                  ),
+                ],
               ),
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Image.asset(
-                      'images/menu.png',
-                      height: 39,
-                    ),
-                    Text(
-                      'Item Details',
-                      style: TextStyleApp.lato.copyWith(
-                          color: ColorSourceApp.black,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 17),
-                    ),
-                    Image.asset(
-                      'images/person.png',
-                      height: 28,
-                    ),
-                  ],
+                padding: const EdgeInsets.only(bottom: 25, top: 20),
+                child: Image.asset(
+                  imagePath,
+                  height: 220,
                 ),
               ),
             ),
-            const GridImemDescription(),
-            Container(
-              color: containerColor,
-              child: ItemDescriptionCard(
-                title: title,
-                description: description,
-                imagePath: imagePath,
+            const Spacer(),
+            Padding(
+              padding: const EdgeInsets.only(right: 30, left: 30, bottom: 30),
+              child: Column(
+                children: [
+                  Text(
+                    title,
+                    style: TextStyleApp.height24.copyWith(
+                      color: ColorSourceApp.black,
+                      fontSize: 20,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    description,
+                    style: const TextStyle(
+                        color: ColorSourceApp.grey, fontSize: 14),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
             ),
-            const GridImemDescription(),
             const AddToppingsItem(),
-            const GridImemDescription(),
             BlocBuilder<ItemDetailsCubit, ItemDetailsState>(
               builder: (context, state) {
                 return Container(
                   color: ColorSourceApp.white,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 30, vertical: 16),
+                    padding: const EdgeInsets.only(
+                        left: 30, right: 30, top: 20, bottom: 50),
                     child: ButtonAddToBusketItem(
                       totalPrice: state.totalPrice,
                     ),
@@ -87,7 +125,6 @@ class DescriptionItem extends StatelessWidget {
                 );
               },
             ),
-            const GridImemDescription(),
           ],
         ),
       ),

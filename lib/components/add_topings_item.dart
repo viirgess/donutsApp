@@ -20,49 +20,71 @@ class _AddToppingsItemState extends State<AddToppingsItem> {
     return BlocBuilder<ItemDetailsCubit, ItemDetailsState>(
       builder: (context, state) {
         return Container(
-          color: Colors.white,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 15, horizontal: 22),
-                child: Text(
-                  'ADD TOPPINGS',
-                  style: TextStyleApp.height24.copyWith(
-                    color: ColorSourceApp.black,
-                    fontSize: 19,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(40),
+              topRight: Radius.circular(40),
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.3),
+                offset: const Offset(0, 3),
+                blurRadius: 5,
+                spreadRadius: 0,
+              ),
+            ],
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 15, horizontal: 22),
+                  child: Text(
+                    'ADD TOPPINGS',
+                    style: TextStyleApp.height24.copyWith(
+                      color: ColorSourceApp.black,
+                      fontSize: 19,
+                    ),
                   ),
                 ),
-              ),
-              ...state.toppingsList.map((e) {
-                return Row(
-                  children: [
-                    SizedBox(
-                      height: 30,
-                      width: 30,
-                      child: Checkbox(
-                        value: state.currentItem.contains(e),
-                        onChanged: (bool? value) {
-                          context.read<ItemDetailsCubit>().manageToppings(e);
-                        },
-                      ),
+                ...state.toppingsList.map((e) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 3),
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          height: 30,
+                          width: 30,
+                          child: Checkbox(
+                            value: state.currentItem.contains(e),
+                            onChanged: (bool? value) {
+                              context
+                                  .read<ItemDetailsCubit>()
+                                  .manageToppings(e);
+                            },
+                          ),
+                        ),
+                        Text(
+                          '${e.title}',
+                          style: TextStyleApp.lato.copyWith(
+                              color: ColorSourceApp.grey,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500),
+                        ),
+                        const Spacer(),
+                        Text('+ \$' '${e.toppingPrice}'),
+                        const SizedBox(width: 16),
+                      ],
                     ),
-                    Text(
-                      '${e.title}',
-                      style: TextStyleApp.lato.copyWith(
-                          color: ColorSourceApp.grey,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    const Spacer(),
-                    Text('+ \$' '${e.toppingPrice}'),
-                    const SizedBox(width: 16),
-                  ],
-                );
-              }).toList(),
-              const SizedBox(height: 10),
-            ],
+                  );
+                }).toList(),
+                const SizedBox(height: 10),
+              ],
+            ),
           ),
         );
       },
