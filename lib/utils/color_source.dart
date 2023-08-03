@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 class ColorSourceApp {
   static const pink = Color(0xFFFF5ABD);
+  static const brightPink = Color(0xFFFF46B5);
   static const black = Color(0xFF000000);
   static const yellow = Color(0xFFFFC107);
   static const lightBlue = Color(0xFFe8f4f8);
@@ -26,4 +27,5 @@ class ColorSourceApp {
 }
 //background: ##FF79D1
 //#C8C8C8   #FFBCEC
+//#FF46B5
 //background: #BEBEBE;

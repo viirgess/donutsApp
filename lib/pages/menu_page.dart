@@ -90,14 +90,14 @@ class _MenuPageState extends State<MenuPage> {
                               imagePath: ItemMenuFakeData
                                   .FakeDataItemMenu[index].imagePath,
                               containerColor: ItemMenuFakeData
-                                  .FakeDataItemMenu[index].backgroundColor,
+                                  .FakeDataItemMenu[index].imageColor,
                             ),
                           ),
                         );
                       },
                       child: Container(
-                        color: ItemMenuFakeData
-                            .FakeDataItemMenu[index].backgroundColor,
+                        color:
+                            ItemMenuFakeData.FakeDataItemMenu[index].imageColor,
                         child: Row(
                           children: [
                             CardMenuItem(
@@ -107,6 +107,9 @@ class _MenuPageState extends State<MenuPage> {
                                   .FakeDataItemMenu[index].description,
                               imagePath: ItemMenuFakeData
                                   .FakeDataItemMenu[index].imagePath,
+                              price: 'hde',
+                              imageColor: ItemMenuFakeData
+                                  .FakeDataItemMenu[index].imageColor,
                             ),
                             ButtonAddItem(
                               buttonColor: ItemMenuFakeData
@@ -118,7 +121,7 @@ class _MenuPageState extends State<MenuPage> {
                               imagePath: ItemMenuFakeData
                                   .FakeDataItemMenu[index].imagePath,
                               containerColor: ItemMenuFakeData
-                                  .FakeDataItemMenu[index].backgroundColor,
+                                  .FakeDataItemMenu[index].imageColor,
                             ),
                           ],
                         ),

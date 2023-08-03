@@ -1,4 +1,5 @@
 import 'package:app/cubit/register/register_page_cubit.dart';
+import 'package:app/menu/menu_page_main.dart';
 import 'package:app/pages/first_screen_page.dart';
 import 'package:app/pages/menu_page.dart';
 import 'package:app/utils/color_source.dart';
@@ -22,7 +23,7 @@ class RegisterPage extends StatelessWidget {
           if (state is RegisterPageDone) {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const MenuPage()),
+              MaterialPageRoute(builder: (context) => const MenuPageMain()),
             );
           } else if (state is RegisterPageBlock) {
             Navigator.push(
@@ -34,6 +35,7 @@ class RegisterPage extends StatelessWidget {
         child: BlocBuilder<RegisterPageCubit, RegisterPageState>(
           builder: (context, state) {
             return Scaffold(
+              resizeToAvoidBottomInset: false,
               body: Column(
                 children: [
                   const SizedBox(
@@ -107,33 +109,23 @@ class RegisterPage extends StatelessWidget {
                     ),
                   ),
                   //const Spacer(),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MenuPage(),
-                        ),
-                      );
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text('Create',
-                            style: TextStyleApp.height25
-                                .copyWith(color: ColorSourceApp.middleGrey)),
-                        const SizedBox(
-                          width: 14,
-                        ),
-                        ButtonNext(
-                          callBack: () =>
-                              context.read<RegisterPageCubit>().register(),
-                          isEnable: state.isValid,
-                          status: state.buttonStatus,
-                        ),
-                      ],
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text('Create',
+                          style: TextStyleApp.height25
+                              .copyWith(color: ColorSourceApp.middleGrey)),
+                      const SizedBox(
+                        width: 14,
+                      ),
+                      ButtonNext(
+                        callBack: () =>
+                            context.read<RegisterPageCubit>().register(),
+                        isEnable: state.isValid,
+                        status: state.buttonStatus,
+                      ),
+                    ],
                   ),
                   const Spacer(),
                   Column(

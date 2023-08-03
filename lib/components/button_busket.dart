@@ -54,7 +54,7 @@ class ButtonAddToBusketItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Icon(
-                    Icons.shopping_basket_outlined,
+                    Icons.shopping_cart_outlined,
                     color: ColorSourceApp.black,
                     size: 17,
                   ),
