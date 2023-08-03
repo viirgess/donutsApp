@@ -39,7 +39,7 @@ class AppBarMenu extends StatelessWidget implements PreferredSizeWidget {
               ),
               IconButton(
                 icon: const Icon(
-                  Icons.person_outlined,
+                  Icons.shopping_cart_outlined,
                   color: ColorSourceApp.white,
                 ),
                 onPressed: () {},
