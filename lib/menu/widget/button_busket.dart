@@ -1,27 +1,18 @@
-import 'package:app/pages/description_item_page.dart';
-import 'package:app/utils/color_source.dart';
 import 'package:flutter/material.dart';
 
-class ButtonAddItem extends StatelessWidget {
-  final String title;
-  final String description;
-  final String imagePath;
-  final Color buttonColor;
-  final Color containerColor;
-  const ButtonAddItem({
-    super.key,
-    required this.buttonColor,
-    required this.title,
-    required this.description,
-    required this.imagePath,
-    required this.containerColor,
-  });
+import '../../pages/order_check.dart';
+import '../../utils/color_source.dart';
+
+class ButtonAddToBusketItem extends StatelessWidget {
+  final double totalPrice;
+
+  ButtonAddToBusketItem({super.key, required this.totalPrice});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 80,
-      width: 40,
+      height: 45,
+      width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
         border: Border.all(
@@ -47,31 +38,35 @@ class ButtonAddItem extends StatelessWidget {
           ),
           child: Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30), color: buttonColor),
+              borderRadius: BorderRadius.circular(30),
+              color: Colors.amber,
+            ),
             child: TextButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => DescriptionItem(
-                      title: title,
-                      description: description,
-                      imagePath: imagePath,
-                      containerColor: containerColor,
-                    ),
-                  ),
+                  MaterialPageRoute(builder: (context) => const OrderCheck()),
                 );
                 debugPrint('Received click');
               },
-              child: const Column(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Icon(
-                    Icons.shopping_basket_outlined,
+                  const Icon(
+                    Icons.shopping_cart_outlined,
                     color: ColorSourceApp.black,
                     size: 17,
                   ),
+                  const SizedBox(
+                    width: 3,
+                  ),
+                  const Text('Add to Card ',
+                      style: TextStyle(color: ColorSourceApp.black)),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Text('\$$totalPrice',
+                      style: const TextStyle(color: ColorSourceApp.black)),
                 ],
               ),
             ),

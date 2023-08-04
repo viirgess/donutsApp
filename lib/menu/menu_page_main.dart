@@ -1,12 +1,12 @@
-import 'package:app/components/card_menu_item.dart';
-import 'package:app/components/fake_data/item_menu_fake_data.dart';
+import 'package:app/menu/cubit/navigation_cubit/navigation_menu_cubit.dart';
+import 'package:app/menu/fake_data/item_menu_fake_data.dart';
+import 'package:app/menu/widget/card_menu_item.dart';
 import 'package:app/menu/widget/app_bar.dart';
-import 'package:app/pages/description_item_page.dart';
 import 'package:app/utils/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'cubit/navigation_menu_cubit.dart';
+import 'components/card_item/description_item_page.dart';
 
 class MenuPageMain extends StatelessWidget {
   const MenuPageMain({super.key});

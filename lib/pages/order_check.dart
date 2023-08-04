@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../utils/color_source.dart';
 import '../utils/text_style.dart';
-import '../widgets/grid_menu_item.dart';
 
 class OrderCheck extends StatelessWidget {
   const OrderCheck({super.key});
@@ -12,7 +11,6 @@ class OrderCheck extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          const GridMenuItem(),
           const SizedBox(
             height: 12,
           ),

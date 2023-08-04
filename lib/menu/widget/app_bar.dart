@@ -1,3 +1,4 @@
+import 'package:app/menu/components/menu_modal_sheet/menu_modal_sheet.dart';
 import 'package:app/utils/color_source.dart';
 import 'package:flutter/material.dart';
 
@@ -31,12 +32,11 @@ class AppBarMenu extends StatelessWidget implements PreferredSizeWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               IconButton(
-                icon: const Icon(
-                  Icons.drag_handle,
-                  color: ColorSourceApp.white,
-                ),
-                onPressed: () {},
-              ),
+                  icon: const Icon(
+                    Icons.drag_handle,
+                    color: ColorSourceApp.white,
+                  ),
+                  onPressed: () {}),
               IconButton(
                 icon: const Icon(
                   Icons.shopping_cart_outlined,

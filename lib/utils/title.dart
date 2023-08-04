@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../utils/color_source.dart';
-import '../utils/text_style.dart';
+import 'color_source.dart';
+import 'text_style.dart';
 
 class TextTitleDonuts extends StatelessWidget {
   const TextTitleDonuts({super.key});

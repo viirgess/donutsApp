@@ -1,15 +1,11 @@
-import 'package:app/components/item_description_card.dart';
-import 'package:app/menu/widget/app_bar.dart';
+import 'package:app/menu/cubit/item_detail_cubit/item_details_cubit.dart';
 import 'package:app/utils/color_source.dart';
 import 'package:app/utils/text_style.dart';
-import 'package:app/components/add_topings_item.dart';
-import 'package:app/components/button_busket.dart';
-import 'package:app/widgets/grid_item_description.dart';
+import 'package:app/menu/widget/add_topings_item.dart';
+import 'package:app/menu/widget/button_busket.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../components/item_details/cubit/item_details_cubit.dart';
 
 class DescriptionItem extends StatelessWidget {
   final String title;

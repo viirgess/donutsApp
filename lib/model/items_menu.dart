@@ -1,7 +1,5 @@
 import 'dart:ui';
 
-import '../widgets/button_add_item.dart';
-
 class ItemDescription {
   final String imagePath;
   final String title;

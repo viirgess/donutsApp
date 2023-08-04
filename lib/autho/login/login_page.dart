@@ -1,19 +1,16 @@
 import 'package:app/autho/register/register.dart';
 import 'package:app/cubit/login/login_page_cubit.dart';
-import 'package:app/cubit/register/register_page_cubit.dart';
 import 'package:app/menu/menu_page_main.dart';
 import 'package:app/pages/first_screen_page.dart';
-import 'package:app/pages/menu_page.dart';
-import 'package:app/widgets/field_app.dart';
+import 'package:app/autho/widgets/field_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../utils/color_source.dart';
 import '../../utils/text_style.dart';
-import '../../widgets/button_next.dart';
-import '../../widgets/grid_first_page.dart';
-import '../../widgets/text.dart';
+import '../widgets/button_next.dart';
+import '../../utils/title.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});

@@ -1,12 +1,11 @@
 import 'package:app/cubit/register/register_page_cubit.dart';
 import 'package:app/menu/menu_page_main.dart';
 import 'package:app/pages/first_screen_page.dart';
-import 'package:app/pages/menu_page.dart';
 import 'package:app/utils/color_source.dart';
 import 'package:app/utils/text_style.dart';
-import 'package:app/widgets/button_next.dart';
-import 'package:app/widgets/field_app.dart';
-import 'package:app/widgets/text.dart';
+import 'package:app/autho/widgets/button_next.dart';
+import 'package:app/autho/widgets/field_app.dart';
+import 'package:app/utils/title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';

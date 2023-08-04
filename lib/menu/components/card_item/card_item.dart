@@ -40,7 +40,7 @@ class CardItem extends StatelessWidget {
                   width: 90,
                   height: 90,
                 ),
-                Text(
+                const Text(
                   'edjkhjkedfs',
                   style: TextStyle(fontSize: 50, color: Colors.black),
                 ),
