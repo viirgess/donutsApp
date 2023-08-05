@@ -1,9 +1,12 @@
-import 'package:app/components/card_menu_item.dart';
-import 'package:app/components/fake_data/item_menu_fake_data.dart';
+import 'package:app/menu/cubit/navigation_cubit/navigation_menu_cubit.dart';
+import 'package:app/menu/fake_data/item_menu_fake_data.dart';
+import 'package:app/menu/widget/card_menu_item.dart';
 import 'package:app/menu/widget/app_bar.dart';
-import 'package:app/pages/description_item_page.dart';
 import 'package:app/utils/text_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'components/card_item/description_item_page.dart';
 
 class MenuPageMain extends StatelessWidget {
   const MenuPageMain({super.key});
@@ -15,132 +18,60 @@ class MenuPageMain extends StatelessWidget {
         return false;
       },
       child: Scaffold(
-        appBar: AppBarMenu(),
+        appBar: const AppBarMenu(),
         body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text(
-                  'Craving Some Donuts?',
-                  style: TextStyleApp.height15Bold,
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => DescriptionItem(
-                        title: ItemMenuFakeData.FakeDataItemMenu[0].title,
-                        description:
-                            ItemMenuFakeData.FakeDataItemMenu[0].description,
-                        imagePath:
-                            ItemMenuFakeData.FakeDataItemMenu[0].imagePath,
-                        containerColor:
-                            ItemMenuFakeData.FakeDataItemMenu[0].imageColor,
+          child: BlocProvider<NavigationMenuCubit>(
+            create: (context) => NavigationMenuCubit(),
+            child: BlocBuilder<NavigationMenuCubit, NavigationMenuState>(
+              builder: (context, state) {
+                final selectedIndex = state.selectedItemIndex;
+                final selectedItem =
+                    ItemMenuFakeData.FakeDataItemMenu[selectedIndex];
+                return Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        'Craving Some Donuts?',
+                        style: TextStyleApp.height15
+                            .copyWith(fontWeight: FontWeight.bold),
                       ),
                     ),
-                  );
-                },
-                child: CardMenuItem(
-                  title: ItemMenuFakeData.FakeDataItemMenu[0].title,
-                  description: ItemMenuFakeData.FakeDataItemMenu[0].description,
-                  imagePath: ItemMenuFakeData.FakeDataItemMenu[0].imagePath,
-                  price: ItemMenuFakeData.FakeDataItemMenu[0].price,
-                  imageColor: ItemMenuFakeData.FakeDataItemMenu[0].imageColor,
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => DescriptionItem(
-                        title: ItemMenuFakeData.FakeDataItemMenu[1].title,
-                        description:
-                            ItemMenuFakeData.FakeDataItemMenu[1].description,
-                        imagePath:
-                            ItemMenuFakeData.FakeDataItemMenu[1].imagePath,
-                        containerColor:
-                            ItemMenuFakeData.FakeDataItemMenu[1].imageColor,
+                    for (int index = 0;
+                        index < ItemMenuFakeData.FakeDataItemMenu.length;
+                        index++)
+                      GestureDetector(
+                        onTap: () {
+                          context.read<NavigationMenuCubit>().selectItem(index);
+                          final selectedItem =
+                              ItemMenuFakeData.FakeDataItemMenu[index];
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => DescriptionItem(
+                                title: selectedItem.title,
+                                description: selectedItem.description,
+                                imagePath: selectedItem.imagePath,
+                                containerColor: selectedItem.imageColor,
+                              ),
+                            ),
+                          );
+                        },
+                        child: CardMenuItem(
+                          title: ItemMenuFakeData.FakeDataItemMenu[index].title,
+                          description: ItemMenuFakeData
+                              .FakeDataItemMenu[index].description,
+                          imagePath: ItemMenuFakeData
+                              .FakeDataItemMenu[index].imagePath,
+                          price: ItemMenuFakeData.FakeDataItemMenu[index].price,
+                          imageColor: ItemMenuFakeData
+                              .FakeDataItemMenu[index].imageColor,
+                        ),
                       ),
-                    ),
-                  );
-                },
-                child: CardMenuItem(
-                  title: ItemMenuFakeData.FakeDataItemMenu[1].title,
-                  description: ItemMenuFakeData.FakeDataItemMenu[1].description,
-                  imagePath: ItemMenuFakeData.FakeDataItemMenu[1].imagePath,
-                  price: ItemMenuFakeData.FakeDataItemMenu[1].price,
-                  imageColor: ItemMenuFakeData.FakeDataItemMenu[1].imageColor,
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => DescriptionItem(
-                        title: ItemMenuFakeData.FakeDataItemMenu[2].title,
-                        description:
-                            ItemMenuFakeData.FakeDataItemMenu[2].description,
-                        imagePath:
-                            ItemMenuFakeData.FakeDataItemMenu[2].imagePath,
-                        containerColor:
-                            ItemMenuFakeData.FakeDataItemMenu[2].imageColor,
-                      ),
-                    ),
-                  );
-                },
-                child: CardMenuItem(
-                  title: ItemMenuFakeData.FakeDataItemMenu[2].title,
-                  description: ItemMenuFakeData.FakeDataItemMenu[2].description,
-                  imagePath: ItemMenuFakeData.FakeDataItemMenu[2].imagePath,
-                  price: ItemMenuFakeData.FakeDataItemMenu[2].price,
-                  imageColor: ItemMenuFakeData.FakeDataItemMenu[2].imageColor,
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => DescriptionItem(
-                        title: ItemMenuFakeData.FakeDataItemMenu[3].title,
-                        description:
-                            ItemMenuFakeData.FakeDataItemMenu[3].description,
-                        imagePath:
-                            ItemMenuFakeData.FakeDataItemMenu[3].imagePath,
-                        containerColor:
-                            ItemMenuFakeData.FakeDataItemMenu[3].imageColor,
-                      ),
-                    ),
-                  );
-                },
-                child: CardMenuItem(
-                  title: ItemMenuFakeData.FakeDataItemMenu[3].title,
-                  description: ItemMenuFakeData.FakeDataItemMenu[3].description,
-                  imagePath: ItemMenuFakeData.FakeDataItemMenu[3].imagePath,
-                  price: ItemMenuFakeData.FakeDataItemMenu[3].price,
-                  imageColor: ItemMenuFakeData.FakeDataItemMenu[3].imageColor,
-                ),
-              ),
-              CardMenuItem(
-                title: ItemMenuFakeData.FakeDataItemMenu[3].title,
-                description: ItemMenuFakeData.FakeDataItemMenu[3].description,
-                imagePath: ItemMenuFakeData.FakeDataItemMenu[3].imagePath,
-                price: ItemMenuFakeData.FakeDataItemMenu[3].price,
-                imageColor: ItemMenuFakeData.FakeDataItemMenu[3].imageColor,
-              ),
-              CardMenuItem(
-                title: ItemMenuFakeData.FakeDataItemMenu[3].title,
-                description: ItemMenuFakeData.FakeDataItemMenu[3].description,
-                imagePath: ItemMenuFakeData.FakeDataItemMenu[3].imagePath,
-                price: ItemMenuFakeData.FakeDataItemMenu[3].price,
-                imageColor: ItemMenuFakeData.FakeDataItemMenu[3].imageColor,
-              ),
-            ],
+                  ],
+                );
+              },
+            ),
           ),
         ),
       ),

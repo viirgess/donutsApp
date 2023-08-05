@@ -1,9 +1,8 @@
+import 'package:app/menu/cubit/item_detail_cubit/item_details_cubit.dart';
 import 'package:app/utils/color_source.dart';
 import 'package:app/utils/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'item_details/cubit/item_details_cubit.dart';
 
 class AddToppingsItem extends StatefulWidget {
   const AddToppingsItem({Key? key}) : super(key: key);

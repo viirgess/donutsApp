@@ -13,7 +13,7 @@ class ItemDetailsState {
 
   ItemDetailsState.initial()
       : totalPrice = 9.99,
-        toppingsList = FakeData.fakeDataToppings,
+        toppingsList = FakeDataMenu.fakeDataToppings,
         currentItem = [];
 
   @override

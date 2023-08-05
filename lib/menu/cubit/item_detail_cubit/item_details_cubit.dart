@@ -1,4 +1,4 @@
-import 'package:app/components/fake_data/fake_data.dart';
+import 'package:app/menu/fake_data/fake_data.dart';
 import 'package:bloc/bloc.dart';
 
 part 'item_details_state.dart';

@@ -1,6 +1,6 @@
 import '../../model/prices_toppings.dart';
 
-class FakeData {
+class FakeDataMenu {
   static List<AddTopppings> fakeDataToppings = [
     AddTopppings(
       title: 'Sprinkles',
