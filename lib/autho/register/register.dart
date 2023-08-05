@@ -22,7 +22,7 @@ class RegisterPage extends StatelessWidget {
           if (state is RegisterPageDone) {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const MenuPageMain()),
+              MaterialPageRoute(builder: (context) => MenuPageMain()),
             );
           } else if (state is RegisterPageBlock) {
             Navigator.push(

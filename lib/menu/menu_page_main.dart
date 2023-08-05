@@ -1,7 +1,8 @@
+import 'package:app/cubit/register/register_page_cubit.dart';
 import 'package:app/menu/cubit/navigation_cubit/navigation_menu_cubit.dart';
 import 'package:app/menu/fake_data/item_menu_fake_data.dart';
 import 'package:app/menu/widget/card_menu_item.dart';
-import 'package:app/menu/widget/app_bar.dart';
+import 'package:app/utils/color_source.dart';
 import 'package:app/utils/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,7 +10,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'components/card_item/description_item_page.dart';
 
 class MenuPageMain extends StatelessWidget {
-  const MenuPageMain({super.key});
+  MenuPageMain({super.key});
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,165 @@ class MenuPageMain extends StatelessWidget {
         return false;
       },
       child: Scaffold(
-        appBar: const AppBarMenu(),
+        key: _scaffoldKey,
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft:
+                  Radius.elliptical(MediaQuery.of(context).size.width, 15.0),
+              bottomRight:
+                  Radius.elliptical(MediaQuery.of(context).size.width, 90.0),
+            ),
+            side: const BorderSide(
+              color: Colors.black,
+              // Replace this with your desired border color
+              width: 2.0, // Replace this with your desired border width
+            ),
+          ),
+          backgroundColor: ColorSourceApp.brightPink,
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    icon: const Icon(
+                      Icons.drag_handle,
+                      color: ColorSourceApp.white,
+                    ),
+                    onPressed: () {
+                      _scaffoldKey.currentState?.openDrawer();
+                    },
+                  ),
+                  IconButton(
+                    icon: const Icon(
+                      Icons.shopping_cart_outlined,
+                      color: ColorSourceApp.white,
+                    ),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        drawer: BlocProvider<RegisterPageCubit>(
+          create: (context) => RegisterPageCubit(),
+          child: BlocBuilder<RegisterPageCubit, RegisterPageState>(
+            builder: (context, state) {
+              return Container(
+                width: MediaQuery.of(context).size.width * 0.60,
+                child: Drawer(
+                  child: SingleChildScrollView(
+                    padding: EdgeInsets.zero,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 130,
+                          child: DrawerHeader(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.elliptical(
+                                    MediaQuery.of(context).size.width, 15.0),
+                                bottomRight: Radius.elliptical(
+                                    MediaQuery.of(context).size.width, 90.0),
+                              ),
+                              border: Border.all(
+                                color: Colors.black,
+                                width: 2.0,
+                              ),
+                              color: ColorSourceApp.brightPink,
+                            ),
+                            child: Row(
+                              children: [
+                                Text(
+                                  'Hey , ',
+                                  style: TextStyleApp.height15.copyWith(
+                                    color: ColorSourceApp.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 19,
+                                  ),
+                                ),
+                                Text(
+                                  'name',
+                                  style: TextStyleApp.height15.copyWith(
+                                    color: ColorSourceApp.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 19,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Column(
+                          children: [
+                            ListTile(
+                              leading: const Icon(
+                                Icons.person,
+                              ),
+                              title: const Text('Profile'),
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                            ListTile(
+                              leading: const Icon(
+                                Icons.shopping_cart_outlined,
+                              ),
+                              title: const Text('My orders'),
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                            ListTile(
+                              leading: const Icon(
+                                Icons.payment,
+                              ),
+                              title: const Text('Payments'),
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                            ListTile(
+                              leading: const Icon(
+                                Icons.settings,
+                              ),
+                              title: const Text('Settings'),
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                            ListTile(
+                              leading: const Icon(
+                                Icons.info,
+                              ),
+                              title: const Text('Info'),
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                            ListTile(
+                              leading: const Icon(
+                                Icons.help,
+                              ),
+                              title: const Text('Help'),
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
         body: SingleChildScrollView(
           child: BlocProvider<NavigationMenuCubit>(
             create: (context) => NavigationMenuCubit(),

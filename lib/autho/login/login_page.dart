@@ -24,7 +24,7 @@ class LoginPage extends StatelessWidget {
           if (state is UserPageIsLogin) {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const MenuPageMain()),
+              MaterialPageRoute(builder: (context) => MenuPageMain()),
             );
           } else if (state is UserPageNotLogin) {
             Navigator.push(

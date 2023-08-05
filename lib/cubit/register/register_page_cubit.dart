@@ -61,6 +61,16 @@ class RegisterPageCubit extends Cubit<RegisterPageState> {
     ));
   }
 
+  setName(String name) {
+    emit(RegisterPageState(
+      name: state.name,
+      email: state.email,
+      password: '',
+      phone: '',
+      buttonStatus: ButtonStatus.active,
+    ));
+  }
+
   void register() async {
     emit(RegisterPageState(
         name: state.name,
