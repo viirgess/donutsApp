@@ -5,11 +5,21 @@ class MenuModalSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FractionallySizedBox(
-      widthFactor: 0.5,
-      child: Container(
-        color: Colors.red,
+    return Scaffold(
+      drawer: Drawer(
+        child: Container(
+          height: double.infinity,
+          color: Colors.amber,
+        ),
       ),
     );
+    // return FractionallySizedBox(
+    //   alignment: Alignment.centerLeft,
+    //   heightFactor: 5,
+    //   widthFactor: 0.6,
+    //   child: Container(
+    //     color: Colors.red,
+    //   ),
+    // );
   }
 }
