@@ -1,3 +1,4 @@
+import 'package:app/menu/menu_page_main.dart';
 import 'package:flutter/material.dart';
 
 import '../../pages/order_check.dart';
@@ -6,7 +7,7 @@ import '../../utils/color_source.dart';
 class ButtonAddToBusketItem extends StatelessWidget {
   final double totalPrice;
 
-  ButtonAddToBusketItem({super.key, required this.totalPrice});
+  const ButtonAddToBusketItem({super.key, required this.totalPrice});
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +46,7 @@ class ButtonAddToBusketItem extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const OrderCheck()),
+                  MaterialPageRoute(builder: (context) => MenuPageMain()),
                 );
                 debugPrint('Received click');
               },
