@@ -40,26 +40,29 @@ class MenuPageMain extends StatelessWidget {
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    icon: const Icon(
-                      Icons.drag_handle,
-                      color: ColorSourceApp.white,
+              Padding(
+                padding: const EdgeInsets.only(bottom: 16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      icon: const Icon(
+                        Icons.drag_handle,
+                        color: ColorSourceApp.white,
+                      ),
+                      onPressed: () {
+                        _scaffoldKey.currentState?.openDrawer();
+                      },
                     ),
-                    onPressed: () {
-                      _scaffoldKey.currentState?.openDrawer();
-                    },
-                  ),
-                  IconButton(
-                    icon: const Icon(
-                      Icons.shopping_cart_outlined,
-                      color: ColorSourceApp.white,
+                    IconButton(
+                      icon: const Icon(
+                        Icons.shopping_cart_outlined,
+                        color: ColorSourceApp.white,
+                      ),
+                      onPressed: () {},
                     ),
-                    onPressed: () {},
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),
@@ -117,9 +120,15 @@ class MenuPageMain extends StatelessWidget {
                           children: [
                             ListTile(
                               leading: const Icon(
-                                Icons.person,
+                                Icons.person_outlined,
+                                color: ColorSourceApp.black,
                               ),
-                              title: const Text('Profile'),
+                              title: const Text(
+                                'Profile',
+                                style: TextStyle(
+                                  color: ColorSourceApp.black,
+                                ),
+                              ),
                               onTap: () {
                                 Navigator.pop(context);
                               },
@@ -127,8 +136,14 @@ class MenuPageMain extends StatelessWidget {
                             ListTile(
                               leading: const Icon(
                                 Icons.shopping_cart_outlined,
+                                color: ColorSourceApp.black,
                               ),
-                              title: const Text('My orders'),
+                              title: const Text(
+                                'My orders',
+                                style: TextStyle(
+                                  color: ColorSourceApp.black,
+                                ),
+                              ),
                               onTap: () {
                                 Navigator.pop(context);
                               },
@@ -136,8 +151,14 @@ class MenuPageMain extends StatelessWidget {
                             ListTile(
                               leading: const Icon(
                                 Icons.payment,
+                                color: ColorSourceApp.black,
                               ),
-                              title: const Text('Payments'),
+                              title: const Text(
+                                'Payments',
+                                style: TextStyle(
+                                  color: ColorSourceApp.black,
+                                ),
+                              ),
                               onTap: () {
                                 Navigator.pop(context);
                               },
@@ -145,26 +166,44 @@ class MenuPageMain extends StatelessWidget {
                             ListTile(
                               leading: const Icon(
                                 Icons.settings,
+                                color: ColorSourceApp.black,
                               ),
-                              title: const Text('Settings'),
+                              title: const Text(
+                                'Settings',
+                                style: TextStyle(
+                                  color: ColorSourceApp.black,
+                                ),
+                              ),
                               onTap: () {
                                 Navigator.pop(context);
                               },
                             ),
                             ListTile(
                               leading: const Icon(
-                                Icons.info,
+                                Icons.info_outline_rounded,
+                                color: ColorSourceApp.black,
                               ),
-                              title: const Text('Info'),
+                              title: const Text(
+                                'Info',
+                                style: TextStyle(
+                                  color: ColorSourceApp.black,
+                                ),
+                              ),
                               onTap: () {
                                 Navigator.pop(context);
                               },
                             ),
                             ListTile(
                               leading: const Icon(
-                                Icons.help,
+                                Icons.help_outline_sharp,
+                                color: ColorSourceApp.black,
                               ),
-                              title: const Text('Help'),
+                              title: const Text(
+                                'Help',
+                                style: TextStyle(
+                                  color: ColorSourceApp.black,
+                                ),
+                              ),
                               onTap: () {
                                 Navigator.pop(context);
                               },
