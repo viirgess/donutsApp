@@ -14,4 +14,6 @@ class TextStyleApp {
       GoogleFonts.montserrat(fontSize: 18, fontWeight: FontWeight.w600);
   static TextStyle height25 =
       GoogleFonts.montserrat(fontSize: 25, fontWeight: FontWeight.w600);
+  static TextStyle height20 =
+      GoogleFonts.preahvihear(fontSize: 25, fontWeight: FontWeight.w600);
 }

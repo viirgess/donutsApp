@@ -32,18 +32,18 @@ class AppBarMenu extends StatelessWidget implements PreferredSizeWidget {
       key: _scaffoldKey,
       body: AppBar(
         automaticallyImplyLeading: false,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            bottomLeft:
-                Radius.elliptical(MediaQuery.of(context).size.width, 15.0),
-            bottomRight:
-                Radius.elliptical(MediaQuery.of(context).size.width, 90.0),
-          ),
-          side: const BorderSide(
-            color: Colors.black, // Replace this with your desired border color
-            width: 2.0, // Replace this with your desired border width
-          ),
-        ),
+        // shape: RoundedRectangleBorder(
+        //   borderRadius: BorderRadius.only(
+        //     bottomLeft:
+        //         Radius.elliptical(MediaQuery.of(context).size.width, 15.0),
+        //     bottomRight:
+        //         Radius.elliptical(MediaQuery.of(context).size.width, 90.0),
+        //   ),
+        //   side: const BorderSide(
+        //     color: Colors.black, // Replace this with your desired border color
+        //     width: 2.0, // Replace this with your desired border width
+        //   ),
+        // ),
         backgroundColor: ColorSourceApp.brightPink,
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
