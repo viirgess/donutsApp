@@ -6,7 +6,6 @@ import 'package:app/autho/widgets/field_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../utils/color_source.dart';
 import '../../utils/text_style.dart';
 import '../widgets/button_next.dart';
@@ -24,6 +23,7 @@ class LoginPage extends StatelessWidget {
           if (state is UserPageIsLogin) {
             Navigator.push(
               context,
+              //
               MaterialPageRoute(builder: (context) => MenuPageMain()),
             );
           } else if (state is UserPageNotLogin) {
