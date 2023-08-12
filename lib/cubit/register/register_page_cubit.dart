@@ -1,8 +1,8 @@
-import 'package:app/service/locator.dart';
 import 'package:app/storage/shared_preferences_service.dart';
 import 'package:app/utils/fire_key.dart';
 import 'package:app/autho/widgets/button_next.dart';
 import 'package:bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -73,22 +73,39 @@ class RegisterPageCubit extends Cubit<RegisterPageState> {
 
   void register() async {
     emit(RegisterPageState(
+      name: state.name,
+      email: state.email,
+      password: state.password,
+      phone: state.phone,
+      buttonStatus: ButtonStatus.active,
+    ));
+
+    try {
+      final userCredential = await firebaseAuth.createUserWithEmailAndPassword(
+        email: state.email,
+        password: state.password,
+      );
+
+      final userRef = FirebaseFirestore.instance
+          .collection('users')
+          .doc(userCredential.user!.uid);
+
+      await userRef.set({
+        'name': state.name,
+        'email': state.email,
+        'phone': state.phone,
+      });
+
+      final uid = userCredential.user!.uid;
+      _sharedPreferencesService.setPreference(FireKey.uid, uid);
+
+      emit(RegisterPageDone(
         name: state.name,
         email: state.email,
         password: state.password,
         phone: state.phone,
-        buttonStatus: ButtonStatus.active));
-    try {
-      final uid = await firebaseAuth.createUserWithEmailAndPassword(
-          email: state.email, password: state.password);
-      print(['=========>, ${uid}']);
-      _sharedPreferencesService.setPreference(FireKey.uid, uid.toString());
-      emit(RegisterPageDone(
-          name: state.name,
-          email: state.email,
-          password: state.password,
-          phone: state.phone,
-          buttonStatus: ButtonStatus.active));
+        buttonStatus: ButtonStatus.active,
+      ));
     } on FirebaseAuthException catch (e) {
       emit(RegisterPageBlock(
         name: state.name,

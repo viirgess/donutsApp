@@ -88,24 +88,27 @@ class CardMenuItem extends StatelessWidget {
                 ),
                 SizedBox(
                   width: 200,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        price,
-                        style: TextStyleApp.lato.copyWith(
-                          color: ColorSourceApp.black,
-                          fontSize: 15,
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 8, right: 5, top: 5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          price,
+                          style: TextStyleApp.lato.copyWith(
+                            color: ColorSourceApp.black,
+                            fontSize: 15,
+                          ),
                         ),
-                      ),
-                      const Spacer(),
-                      const Icon(
-                        Icons.shopping_cart_outlined,
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                    ],
+                        const Spacer(),
+                        const Icon(
+                          Icons.shopping_cart_outlined,
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],

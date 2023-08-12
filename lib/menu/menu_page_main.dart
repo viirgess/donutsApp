@@ -3,7 +3,9 @@ import 'package:app/menu/components/app_bar.dart';
 import 'package:app/menu/cubit/navigation_cubit/navigation_menu_cubit.dart';
 import 'package:app/menu/fake_data/item_menu_fake_data.dart';
 import 'package:app/menu/widget/card_menu_item.dart';
+import 'package:app/utils/color_source.dart';
 import 'package:app/utils/text_style.dart';
+import 'package:app/utils/text_title_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,7 +30,7 @@ class MenuPageMain extends StatelessWidget {
           child: BlocBuilder<RegisterPageCubit, RegisterPageState>(
             builder: (context, state) {
               return SizedBox(
-                width: MediaQuery.of(context).size.width * 0.60,
+                width: MediaQuery.of(context).size.width * 0.80,
                 child: const Drawer(
                   child: DrawerMenu(),
                 ),
@@ -48,11 +50,13 @@ class MenuPageMain extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(10.0),
-                      child: Text(
-                        'Craving Some Donuts?',
-                        style: TextStyleApp.height15
-                            .copyWith(fontWeight: FontWeight.bold),
-                      ),
+                      //child: TitleMenu(),
+                      // Text(
+                      //   'Craving Some Donuts?',
+                      //   style: TextStyleApp.height20.copyWith(
+                      //       fontWeight: FontWeight.w500,
+                      //       color: ColorSourceApp.brightPink),
+                      // ),
                     ),
                     for (int index = 0;
                         index < ItemMenuFakeData.FakeDataItemMenu.length;

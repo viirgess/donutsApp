@@ -24,8 +24,10 @@ class ColorSourceApp {
     colors: [Color(0xFFFF79D1), Color(0xFFFFBCEC)],
     stops: [0.0, 1.0],
   );
+  static const vine = Color(0xFFcc0000);
 }
 //background: ##FF79D1
+//722F37,
 //#C8C8C8   #FFBCEC
 //#FF46B5
 //background: #BEBEBE;
