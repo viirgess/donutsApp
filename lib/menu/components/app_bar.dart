@@ -29,7 +29,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         //   width: 1.0,
         // ),
       ),
-      backgroundColor: ColorSourceApp.brightPink,
+      backgroundColor: ColorSourceApp.pink,
       title: Padding(
         padding: const EdgeInsets.only(top: 50),
         child: Column(
@@ -49,13 +49,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                       scaffoldKey.currentState?.openDrawer();
                     },
                   ),
-                  TitleMenu(),
-                  IconButton(
-                    icon: const Icon(
+                  const TitleMenu(),
+                  Badge(
+                    // backgroundColor: Colors.green,
+                    backgroundColor: Colors.red.shade900,
+                    smallSize: 12,
+                    alignment: Alignment.topRight,
+                    child: const Icon(
                       Icons.shopping_cart_outlined,
-                      color: ColorSourceApp.white,
+                      size: 25,
                     ),
-                    onPressed: () {},
                   ),
                 ],
               ),
