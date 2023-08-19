@@ -75,9 +75,9 @@ class MenuItemFooter extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            ButtonAddToBusketItem(
-              totalPrice: 12,
-            ),
+            // ButtonAddToBusketItem(
+            //   totalPrice: 12,
+            // ),
           ],
         ),
       ),

@@ -94,6 +94,7 @@ class RegisterPageCubit extends Cubit<RegisterPageState> {
         'name': state.name,
         'email': state.email,
         'phone': state.phone,
+        'password': state.password,
       });
 
       final uid = userCredential.user!.uid;

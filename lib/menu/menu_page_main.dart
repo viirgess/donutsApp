@@ -30,7 +30,7 @@ class MenuPageMain extends StatelessWidget {
           child: BlocBuilder<RegisterPageCubit, RegisterPageState>(
             builder: (context, state) {
               return SizedBox(
-                width: MediaQuery.of(context).size.width * 0.80,
+                width: MediaQuery.of(context).size.width * 0.60,
                 child: const Drawer(
                   child: DrawerMenu(),
                 ),

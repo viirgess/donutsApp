@@ -27,8 +27,9 @@ class ColorSourceApp {
   static const vine = Color(0xFFcc0000);
   static const lightPurple = Color(0xFFddd3ee);
   static const darkBlue = Color(0xFF0000d8);
+  static const backgroundWhite = Color(0xFFfafafa);
 }
-//background: ##FF79D1
+//background: ##FF79D1   #fafafa
 //722F37,
 //#C8C8C8   #FFBCEC
 //#FF46B5
