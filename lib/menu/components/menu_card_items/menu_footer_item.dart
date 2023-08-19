@@ -24,11 +24,8 @@ class MenuItemFooter extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                // Spacer(),
                 Text('Subtotal'),
-                //Spacer(),
                 Text('9'),
-                //Spacer(),
               ],
             ),
             SizedBox(
@@ -75,9 +72,9 @@ class MenuItemFooter extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            ButtonAddToBusketItem(
-              totalPrice: 12,
-            ),
+            // ButtonAddToBusketItem(
+            //   totalPrice: 12,
+            // ),
           ],
         ),
       ),

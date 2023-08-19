@@ -19,7 +19,7 @@ class DrawerMenu extends StatelessWidget {
             .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
-            return CircularProgressIndicator(); // Handle loading state
+            return const CircularProgressIndicator(); // Handle loading state
           }
           final userData = snapshot.data!.data();
           final userName = userData?['name'] ?? '';

@@ -1,3 +1,4 @@
+import 'package:app/menu/components/menu_card_items/card_items_modal_sheet.dart';
 import 'package:app/menu/cubit/item_detail_cubit/item_details_cubit.dart';
 import 'package:app/utils/color_source.dart';
 import 'package:app/utils/text_style.dart';
@@ -42,7 +43,16 @@ class DescriptionItem extends StatelessWidget {
                 Icons.shopping_cart_outlined,
                 color: ColorSourceApp.black,
               ),
-              onPressed: () {},
+              onPressed: () {
+                showModalBottomSheet(
+                  barrierColor: Colors.transparent,
+                  isScrollControlled: true,
+                  context: context,
+                  builder: (BuildContext context) {
+                    return const CardModalSheet();
+                  },
+                );
+              },
             ),
           ],
         ),
