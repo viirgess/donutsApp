@@ -46,6 +46,7 @@ dependencies:
   firebase_auth: ^4.7.2
   cloud_firestore: ^4.8.4
   badges: ^3.1.1
+  flutter_slidable: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -94,6 +95,7 @@ flutter:
     - images/google.svg
     - images/facebook.svg
     - images/vector.svg
+    - images/remove_icon.svg
 
   #   - images/a_dot_ham.jpegdark_blue_donuts
  #assets/images

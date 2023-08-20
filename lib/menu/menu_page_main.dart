@@ -30,7 +30,7 @@ class MenuPageMain extends StatelessWidget {
           child: BlocBuilder<RegisterPageCubit, RegisterPageState>(
             builder: (context, state) {
               return SizedBox(
-                width: MediaQuery.of(context).size.width * 0.80,
+                width: MediaQuery.of(context).size.width * 0.60,
                 child: const Drawer(
                   child: DrawerMenu(),
                 ),
@@ -48,16 +48,6 @@ class MenuPageMain extends StatelessWidget {
                     ItemMenuFakeData.FakeDataItemMenu[selectedIndex];
                 return Column(
                   children: [
-                    // Padding(
-                    //   padding: const EdgeInsets.all(10.0),
-                    //   //child: TitleMenu(),
-                    //   // Text(
-                    //   //   'Craving Some Donuts?',
-                    //   //   style: TextStyleApp.height20.copyWith(
-                    //   //       fontWeight: FontWeight.w500,
-                    //   //       color: ColorSourceApp.brightPink),
-                    //   // ),
-                    // ),
                     for (int index = 0;
                         index < ItemMenuFakeData.FakeDataItemMenu.length;
                         index++)

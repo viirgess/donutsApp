@@ -2,6 +2,8 @@ import 'package:app/utils/color_source.dart';
 import 'package:app/utils/text_title_menu.dart';
 import 'package:flutter/material.dart';
 
+import 'menu_card_items/card_items_modal_sheet.dart';
+
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
     Key? key,
@@ -24,10 +26,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           bottomRight:
               Radius.elliptical(MediaQuery.of(context).size.width, 90.0),
         ),
-        // side: const BorderSide(
-        //   color: Colors.black,
-        //   width: 1.0,
-        // ),
       ),
       backgroundColor: ColorSourceApp.pink,
       title: Padding(
@@ -50,14 +48,25 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     },
                   ),
                   const TitleMenu(),
-                  Badge(
-                    // backgroundColor: Colors.green,
-                    backgroundColor: Colors.red.shade900,
-                    smallSize: 12,
-                    alignment: Alignment.topRight,
-                    child: const Icon(
-                      Icons.shopping_cart_outlined,
-                      size: 25,
+                  GestureDetector(
+                    onTap: () {
+                      showModalBottomSheet(
+                        barrierColor: Colors.transparent,
+                        isScrollControlled: true,
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const CardModalSheet();
+                        },
+                      );
+                    },
+                    child: Badge(
+                      backgroundColor: Colors.red.shade900,
+                      smallSize: 12,
+                      alignment: Alignment.topRight,
+                      child: const Icon(
+                        Icons.shopping_cart_outlined,
+                        size: 25,
+                      ),
                     ),
                   ),
                 ],
