@@ -7,6 +7,7 @@ import 'package:flutter/rendering.dart';
 
 import 'cubit/autho/auth_cubit.dart';
 import 'firebase_options.dart';
+import 'menu/fake_data/item_menu_fake_data.dart';
 import 'menu/menu_page_main.dart';
 
 Future<void> main() async {

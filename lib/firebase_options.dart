@@ -4,6 +4,9 @@ import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
 
+import 'menu/fake_data/item_menu_fake_data.dart';
+import 'model/items_menu.dart';
+
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
 /// Example:
@@ -66,7 +69,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '210566736827',
     projectId: 'donuts-29c0b',
     storageBucket: 'donuts-29c0b.appspot.com',
-    iosClientId: '210566736827-ikav71j1laup037qvu9aefinltoieb0n.apps.googleusercontent.com',
+    iosClientId:
+        '210566736827-ikav71j1laup037qvu9aefinltoieb0n.apps.googleusercontent.com',
     iosBundleId: 'com.example.app',
   );
 
@@ -76,7 +80,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '210566736827',
     projectId: 'donuts-29c0b',
     storageBucket: 'donuts-29c0b.appspot.com',
-    iosClientId: '210566736827-r7v7itsjaeba5hqnb2acj9ib6fmmepn1.apps.googleusercontent.com',
+    iosClientId:
+        '210566736827-r7v7itsjaeba5hqnb2acj9ib6fmmepn1.apps.googleusercontent.com',
     iosBundleId: 'com.example.app.RunnerTests',
   );
 }

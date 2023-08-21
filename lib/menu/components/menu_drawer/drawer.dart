@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'component/orders/order_page.dart';
+import 'component/payments/payment_drower_page.dart';
 
 class DrawerMenu extends StatelessWidget {
   const DrawerMenu({super.key});
@@ -118,22 +119,11 @@ class DrawerMenu extends StatelessWidget {
                         ),
                       ),
                       onTap: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      leading: const Icon(
-                        Icons.settings,
-                        color: ColorSourceApp.black,
-                      ),
-                      title: const Text(
-                        'Settings',
-                        style: TextStyle(
-                          color: ColorSourceApp.black,
-                        ),
-                      ),
-                      onTap: () {
-                        Navigator.pop(context);
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const PaymentDrowerPage(),
+                          ),
+                        );
                       },
                     ),
                     ListTile(

@@ -1,4 +1,5 @@
 import 'package:app/utils/color_source.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../model/items_menu.dart';
 
@@ -63,4 +64,22 @@ class ItemMenuFakeData {
         imageColor: ColorSourceApp.lightPink,
         buttonColor: ColorSourceApp.pink),
   ];
+}
+
+void addItemsToFirestore() async {
+  CollectionReference donutsCollection =
+      FirebaseFirestore.instance.collection('Donuts');
+
+  for (ItemDescription item in ItemMenuFakeData.FakeDataItemMenu) {
+    try {
+      DocumentReference docRef = await donutsCollection.add({
+        'title': item.title,
+        'description': item.description,
+        'price': item.price,
+      });
+      print('Item ${item.title} added with ID: ${docRef.id}');
+    } catch (e) {
+      print('Error adding item ${item.title}: $e');
+    }
+  }
 }

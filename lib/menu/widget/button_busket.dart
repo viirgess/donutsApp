@@ -1,4 +1,5 @@
 import 'package:app/menu/cubit/add_item_to_busket/add_item_to_busket_cubit.dart';
+import 'package:app/menu/fake_data/item_menu_fake_data.dart';
 import 'package:app/menu/menu_page_main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -50,6 +51,7 @@ class ButtonAddToBusketItem extends StatelessWidget {
                   ),
                   child: TextButton(
                     onPressed: () {
+                      addItemsToFirestore();
                       // context.read<AddItemToBusketCubit>().addToCart();
                       // debugPrint('Received click');
                     },

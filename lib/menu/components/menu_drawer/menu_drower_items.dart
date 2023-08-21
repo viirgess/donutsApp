@@ -18,10 +18,6 @@ class MenuDrawerItems extends StatelessWidget {
       'title': 'Payments',
     },
     {
-      'icon': Icons.settings,
-      'title': 'Settings',
-    },
-    {
       'icon': Icons.info_outline_rounded,
       'title': 'Info',
     },
