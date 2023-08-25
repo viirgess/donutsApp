@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:app/menu/components/menu_card_items/card_item_checkout.dart';
 import 'package:app/menu/cubit/add_item_to_busket/add_item_to_busket_cubit.dart';
 import 'package:app/menu/fake_data/item_menu_fake_data.dart';
+import 'package:app/model/items_menu.dart';
 import 'package:app/utils/color_source.dart';
 import 'package:app/utils/text_style.dart';
 import 'package:flutter/material.dart';
@@ -34,8 +35,11 @@ class CardModalSheet extends StatelessWidget {
         ),
         child: BlocProvider<AddItemToBusketCubit>(
           create: (context) => AddItemToBusketCubit(),
-          child: BlocBuilder<AddItemToBusketCubit, AddItemToBusketState>(
+          child: BlocConsumer<AddItemToBusketCubit, AddItemToBusketState>(
             builder: (context, state) {
+              final cartItems = context
+                  .select((AddItemToBusketCubit cubit) => cubit.cartItems);
+              //final selectedIndex = state.selectedItemIndex;
               return FractionallySizedBox(
                 heightFactor: 0.82,
                 child: Column(
@@ -55,21 +59,16 @@ class CardModalSheet extends StatelessWidget {
                     ),
                     Expanded(
                       child: ListView.builder(
-                        itemCount: context
-                            .read<AddItemToBusketCubit>()
-                            .cartItems
-                            .length,
+                        itemCount: cartItems.length,
                         itemBuilder: (context, index) {
-                          final selectedItem = context
-                              .read<AddItemToBusketCubit>()
-                              .cartItems[index];
+                          final cartItem = cartItems[index];
                           return Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 12),
                             child: CardItemCheckout(
-                              title: selectedItem.title,
-                              imagePath: selectedItem.imagePath,
-                              price: selectedItem.price,
-                              imageColor: selectedItem.imageColor,
+                              title: cartItem.title,
+                              imagePath: cartItem.imagePath,
+                              price: cartItem.price,
+                              imageColor: cartItem.imageColor,
                             ),
                           );
                         },
@@ -79,6 +78,10 @@ class CardModalSheet extends StatelessWidget {
                   ],
                 ),
               );
+            },
+            listener: (context, state) {
+              // This listener is triggered whenever the state changes.
+              // You can add any necessary actions here.
             },
           ),
         ),

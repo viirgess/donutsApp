@@ -1,5 +1,6 @@
 import 'package:app/menu/components/menu_card_items/card_items_modal_sheet.dart';
 import 'package:app/menu/cubit/item_detail_cubit/item_details_cubit.dart';
+import 'package:app/model/items_menu.dart';
 import 'package:app/utils/color_source.dart';
 import 'package:app/utils/text_style.dart';
 import 'package:app/menu/widget/add_topings_item.dart';
@@ -126,6 +127,13 @@ class DescriptionItem extends StatelessWidget {
                         left: 30, right: 30, top: 20, bottom: 50),
                     child: ButtonAddToBusketItem(
                       totalPrice: state.totalPrice,
+                      currentItem: ItemDescription(
+                        title: title,
+                        description: description,
+                        imagePath: imagePath, imageColor: containerColor,
+                        buttonColor: Colors.black, price: '',
+                        //  containerColor: containerColor,
+                      ),
                     ),
                   ),
                 );

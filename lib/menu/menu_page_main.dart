@@ -14,6 +14,7 @@ import 'components/menu_drawer/drawer.dart';
 
 class MenuPageMain extends StatelessWidget {
   MenuPageMain({super.key});
+
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
