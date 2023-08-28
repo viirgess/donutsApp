@@ -31,7 +31,7 @@ class FooterProfile extends StatelessWidget {
               children: [
                 Icon(
                   Icons.logout,
-                  color: ColorSourceApp.vine,
+                  color: ColorSourceApp.black,
                   size: 30,
                 ),
                 SizedBox(
@@ -55,7 +55,7 @@ class FooterProfile extends StatelessWidget {
               children: [
                 Icon(
                   Icons.delete_outlined,
-                  color: ColorSourceApp.vine,
+                  color: ColorSourceApp.black,
                   size: 28,
                 ),
                 SizedBox(

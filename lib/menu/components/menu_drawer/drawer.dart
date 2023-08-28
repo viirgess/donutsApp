@@ -5,6 +5,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import 'component/orders/order_page.dart';
+
 class DrawerMenu extends StatelessWidget {
   const DrawerMenu({super.key});
 
@@ -97,7 +99,11 @@ class DrawerMenu extends StatelessWidget {
                         ),
                       ),
                       onTap: () {
-                        Navigator.pop(context);
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const OrderMenuPage(),
+                          ),
+                        );
                       },
                     ),
                     ListTile(
