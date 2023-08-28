@@ -37,8 +37,7 @@ class CardModalSheet extends StatelessWidget {
           create: (context) => AddItemToBusketCubit(),
           child: BlocConsumer<AddItemToBusketCubit, AddItemToBusketState>(
             builder: (context, state) {
-              final cartItems = context
-                  .select((AddItemToBusketCubit cubit) => cubit.cartItems);
+              final cartItems = state.cartItems;
               //final selectedIndex = state.selectedItemIndex;
               return FractionallySizedBox(
                 heightFactor: 0.82,
@@ -69,6 +68,7 @@ class CardModalSheet extends StatelessWidget {
                               imagePath: cartItem.imagePath,
                               price: cartItem.price,
                               imageColor: cartItem.imageColor,
+                              //data: cartItem,
                             ),
                           );
                         },

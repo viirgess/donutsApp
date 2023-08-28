@@ -1,3 +1,4 @@
+import 'package:app/model/items_menu.dart';
 import 'package:app/utils/color_source.dart';
 import 'package:app/utils/text_style.dart';
 import 'package:flutter/material.dart';
@@ -5,20 +6,22 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CardItemCheckout extends StatelessWidget {
-  final String imagePath;
   final String title;
+  final String imagePath;
   final String price;
   final Color imageColor;
 
-  const CardItemCheckout(
-      {super.key,
-      required this.imagePath,
-      required this.title,
-      required this.price,
-      required this.imageColor});
+  const CardItemCheckout({
+    super.key,
+    required this.title,
+    required this.imagePath,
+    required this.price,
+    required this.imageColor,
+  });
 
   @override
   Widget build(BuildContext context) {
+    //final List<ItemDescription> cartItems;
     return Slidable(
       endActionPane: ActionPane(
         extentRatio: 0.28,

@@ -59,7 +59,6 @@ class ButtonAddToBusketItem extends StatelessWidget {
                         context
                             .read<AddItemToBusketCubit>()
                             .addToCart(currentItem);
-
                         debugPrint('Added to Cart: ${currentItem.title}');
                       },
                       child: Row(
