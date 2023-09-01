@@ -1,20 +1,23 @@
 import 'package:app/menu/cubit/add_item_to_busket/add_item_to_busket_cubit.dart';
-import 'package:app/menu/menu_page_main.dart';
+import 'package:app/menu/cubit/navigation_cubit/navigation_menu_cubit.dart';
+
+import 'package:app/model/items_menu.dart';
+import 'package:app/service/locator.dart';
+import 'package:app/utils/color_source.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../pages/order_check.dart';
-import '../../utils/color_source.dart';
-
 class ButtonAddToBusketItem extends StatelessWidget {
+  final ItemDescription currentItem;
   final double totalPrice;
 
-  const ButtonAddToBusketItem({super.key, required this.totalPrice});
+  const ButtonAddToBusketItem(
+      {super.key, required this.totalPrice, required this.currentItem});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<AddItemToBusketCubit>(
-      create: (context) => AddItemToBusketCubit(),
+    return BlocProvider<NavigationMenuCubit>(
+      create: (context) => NavigationMenuCubit(),
       child: BlocBuilder<AddItemToBusketCubit, AddItemToBusketState>(
         builder: (context, state) {
           return Container(
@@ -50,8 +53,8 @@ class ButtonAddToBusketItem extends StatelessWidget {
                   ),
                   child: TextButton(
                     onPressed: () {
-                      // context.read<AddItemToBusketCubit>().addToCart();
-                      // debugPrint('Received click');
+                      locator<AddItemToBusketCubit>().addToCart(currentItem);
+                      debugPrint('Added to Cart: ${currentItem.title}');
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,

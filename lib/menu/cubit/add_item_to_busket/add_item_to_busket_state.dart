@@ -1,15 +1,14 @@
 part of 'add_item_to_busket_cubit.dart';
 
 class AddItemToBusketState {
-  final List<ItemDescription> items;
+  final List<ItemDescription> cartItems;
 
   const AddItemToBusketState({
-    required this.items,
+    required this.cartItems,
   });
 
-  List<Object> get props => [items];
+  AddItemToBusketState.initial()
+      : cartItems = ItemMenuFakeData.FakeDataItemMenu;
 
-  static AddItemToBusketState initial() {
-    return AddItemToBusketState(items: []);
-  }
+  List<Object> get props => [cartItems];
 }

@@ -1,4 +1,3 @@
-import 'package:app/menu/widget/button_busket.dart';
 import 'package:app/utils/color_source.dart';
 import 'package:flutter/material.dart';
 
@@ -24,11 +23,8 @@ class MenuItemFooter extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                // Spacer(),
                 Text('Subtotal'),
-                //Spacer(),
                 Text('9'),
-                //Spacer(),
               ],
             ),
             SizedBox(
