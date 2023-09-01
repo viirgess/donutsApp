@@ -44,9 +44,9 @@ class MenuPageMain extends StatelessWidget {
             create: (context) => NavigationMenuCubit(),
             child: BlocBuilder<NavigationMenuCubit, NavigationMenuState>(
               builder: (context, state) {
-                final selectedIndex = state.selectedItemIndex;
-                final selectedItem =
-                    ItemMenuFakeData.FakeDataItemMenu[selectedIndex];
+                //final selectedIndex = state.selectedItemIndex;
+                // final selectedItem =
+                //     ItemMenuFakeData.FakeDataItemMenu[selectedIndex];
                 return Column(
                   children: [
                     for (int index = 0;

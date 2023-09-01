@@ -55,7 +55,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                         isScrollControlled: true,
                         context: context,
                         builder: (BuildContext context) {
-                          return CardModalSheet();
+                          return const CardModalSheet();
                         },
                       );
                     },

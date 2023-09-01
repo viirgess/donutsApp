@@ -4,6 +4,7 @@ import 'package:app/menu/components/menu_card_items/card_item_checkout.dart';
 import 'package:app/menu/cubit/add_item_to_busket/add_item_to_busket_cubit.dart';
 import 'package:app/menu/fake_data/item_menu_fake_data.dart';
 import 'package:app/model/items_menu.dart';
+import 'package:app/service/locator.dart';
 import 'package:app/utils/color_source.dart';
 import 'package:app/utils/text_style.dart';
 import 'package:flutter/material.dart';
@@ -18,27 +19,26 @@ class CardModalSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BackdropFilter(
-      filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
-      child: Container(
-        decoration: BoxDecoration(
-          color: ColorSourceApp.white,
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.4),
-              spreadRadius: 2,
-              blurRadius: 20,
-              offset: const Offset(0, 3),
-            ),
-          ],
-        ),
-        child: BlocProvider<AddItemToBusketCubit>(
-          create: (context) => AddItemToBusketCubit(),
+    return BlocProvider.value(
+      value: locator<AddItemToBusketCubit>(),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
+        child: Container(
+          decoration: BoxDecoration(
+            color: ColorSourceApp.white,
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.4),
+                spreadRadius: 2,
+                blurRadius: 20,
+                offset: const Offset(0, 3),
+              ),
+            ],
+          ),
           child: BlocConsumer<AddItemToBusketCubit, AddItemToBusketState>(
             builder: (context, state) {
               final cartItems = state.cartItems;
-              //final selectedIndex = state.selectedItemIndex;
               return FractionallySizedBox(
                 heightFactor: 0.82,
                 child: Column(
