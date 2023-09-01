@@ -2,8 +2,6 @@ import 'dart:ui';
 
 import 'package:app/menu/components/menu_card_items/card_item_checkout.dart';
 import 'package:app/menu/cubit/add_item_to_busket/add_item_to_busket_cubit.dart';
-import 'package:app/menu/fake_data/item_menu_fake_data.dart';
-import 'package:app/model/items_menu.dart';
 import 'package:app/service/locator.dart';
 import 'package:app/utils/color_source.dart';
 import 'package:app/utils/text_style.dart';
@@ -68,6 +66,7 @@ class CardModalSheet extends StatelessWidget {
                               imagePath: cartItem.imagePath,
                               price: cartItem.price,
                               imageColor: cartItem.imageColor,
+                              currentItemData: cartItem,
                               //data: cartItem,
                             ),
                           );
