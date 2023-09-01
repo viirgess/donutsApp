@@ -4,13 +4,14 @@ import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'cubit/autho/auth_cubit.dart';
 import 'firebase_options.dart';
 import 'menu/menu_page_main.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

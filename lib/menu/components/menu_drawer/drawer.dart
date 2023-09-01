@@ -1,10 +1,14 @@
 import 'package:app/cubit/register/register_page_cubit.dart';
+import 'package:app/menu/components/menu_drawer/component/profile/profile.dart';
 import 'package:app/utils/color_source.dart';
 import 'package:app/utils/text_style.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'component/location/location_page.dart';
+import 'component/orders/order_page.dart';
 
 class DrawerMenu extends StatelessWidget {
   const DrawerMenu({super.key});
@@ -79,7 +83,11 @@ class DrawerMenu extends StatelessWidget {
                         ),
                       ),
                       onTap: () {
-                        Navigator.pop(context);
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const ProfilePage(),
+                          ),
+                        );
                       },
                     ),
                     ListTile(
@@ -94,7 +102,11 @@ class DrawerMenu extends StatelessWidget {
                         ),
                       ),
                       onTap: () {
-                        Navigator.pop(context);
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const OrderMenuPage(),
+                          ),
+                        );
                       },
                     ),
                     ListTile(
@@ -114,17 +126,21 @@ class DrawerMenu extends StatelessWidget {
                     ),
                     ListTile(
                       leading: const Icon(
-                        Icons.settings,
+                        Icons.location_on,
                         color: ColorSourceApp.black,
                       ),
                       title: const Text(
-                        'Settings',
+                        'Location',
                         style: TextStyle(
                           color: ColorSourceApp.black,
                         ),
                       ),
                       onTap: () {
-                        Navigator.pop(context);
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const LocationPage(),
+                          ),
+                        );
                       },
                     ),
                     ListTile(
