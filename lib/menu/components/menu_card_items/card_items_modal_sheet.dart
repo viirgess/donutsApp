@@ -67,6 +67,7 @@ class CardModalSheet extends StatelessWidget {
                               price: cartItem.price,
                               imageColor: cartItem.imageColor,
                               currentItemData: cartItem,
+                              counter: state.counter,
                               //data: cartItem,
                             ),
                           );

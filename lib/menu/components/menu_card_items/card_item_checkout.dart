@@ -14,6 +14,7 @@ class CardItemCheckout extends StatelessWidget {
   final String price;
   final Color imageColor;
   final ItemDescription currentItemData;
+  final int counter;
 
   const CardItemCheckout({
     super.key,
@@ -22,6 +23,7 @@ class CardItemCheckout extends StatelessWidget {
     required this.price,
     required this.imageColor,
     required this.currentItemData,
+    required this.counter,
   });
 
   @override
@@ -130,27 +132,53 @@ class CardItemCheckout extends StatelessWidget {
                                       color: ColorSourceApp.lightBlue,
                                       borderRadius: BorderRadius.circular(15),
                                     ),
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(8.0),
-                                      child: Icon(
-                                        Icons.add,
-                                        color: Colors.black,
-                                        size: 25,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        context
+                                            .read<AddItemToBusketCubit>()
+                                            .incrementCounter();
+                                      },
+                                      child: const Padding(
+                                        padding: EdgeInsets.all(8.0),
+                                        child: Icon(
+                                          Icons.add,
+                                          color: Colors.black,
+                                          size: 25,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                  const Text('1'),
+                                  Text(
+                                    '$counter',
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 18),
+                                  ),
+                                  // Text(
+                                  //   'price',
+                                  //   style: TextStyleApp.lato.copyWith(
+                                  //     color: ColorSourceApp.black,
+                                  //     fontSize: 15,
+                                  //   ),
+                                  // ),
                                   Container(
                                     decoration: BoxDecoration(
                                       color: ColorSourceApp.lightPurple,
                                       borderRadius: BorderRadius.circular(15),
                                     ),
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(8.0),
-                                      child: Icon(
-                                        Icons.remove,
-                                        color: ColorSourceApp.darkBlue,
-                                        size: 25,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        context
+                                            .read<AddItemToBusketCubit>()
+                                            .decrementCounter();
+                                      },
+                                      child: const Padding(
+                                        padding: EdgeInsets.all(8.0),
+                                        child: Icon(
+                                          Icons.remove,
+                                          color: ColorSourceApp.darkBlue,
+                                          size: 25,
+                                        ),
                                       ),
                                     ),
                                   ),

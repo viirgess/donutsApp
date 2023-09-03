@@ -21,4 +21,16 @@ class AddItemToBusketCubit extends Cubit<AddItemToBusketState> {
     final updatedCart = [...state.cartItems]..remove(item);
     emit(AddItemToBusketState(cartItems: updatedCart));
   }
+
+  void incrementCounter() {
+    final updatedCounter = state.counter + 1;
+    emit(state.copyWith(counter: updatedCounter));
+  }
+
+  void decrementCounter() {
+    if (state.counter > 0) {
+      final updatedCounter = state.counter - 1;
+      emit(state.copyWith(counter: updatedCounter));
+    }
+  }
 }
