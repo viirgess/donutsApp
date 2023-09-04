@@ -1,5 +1,4 @@
 import 'package:app/cubit/register/register_page_cubit.dart';
-import 'package:app/menu/components/menu_drawer/component/profile/profile.dart';
 import 'package:app/utils/color_source.dart';
 import 'package:app/utils/text_style.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -7,7 +6,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'component/location/location_page.dart';
 import 'component/orders/order_page.dart';
 
 class DrawerMenu extends StatelessWidget {
@@ -126,21 +124,17 @@ class DrawerMenu extends StatelessWidget {
                     ),
                     ListTile(
                       leading: const Icon(
-                        Icons.location_on,
+                        Icons.settings,
                         color: ColorSourceApp.black,
                       ),
                       title: const Text(
-                        'Location',
+                        'Settings',
                         style: TextStyle(
                           color: ColorSourceApp.black,
                         ),
                       ),
                       onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => const LocationPage(),
-                          ),
-                        );
+                        Navigator.pop(context);
                       },
                     ),
                     ListTile(
