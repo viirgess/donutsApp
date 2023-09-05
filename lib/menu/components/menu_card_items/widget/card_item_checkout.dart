@@ -1,6 +1,6 @@
 import 'package:app/menu/cubit/add_item_to_busket/add_item_to_busket_cubit.dart';
 import 'package:app/model/items_menu.dart';
-import 'package:app/service/locator.dart';
+import 'package:app/locator/locator.dart';
 import 'package:app/utils/color_source.dart';
 import 'package:app/utils/text_style.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +11,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 class CardItemCheckout extends StatelessWidget {
   final String title;
   final String imagePath;
-  final String price;
+  final String totalPrice;
   final Color imageColor;
   final ItemDescription currentItemData;
   final int counter;
@@ -20,7 +20,7 @@ class CardItemCheckout extends StatelessWidget {
     super.key,
     required this.title,
     required this.imagePath,
-    required this.price,
+    required this.totalPrice,
     required this.imageColor,
     required this.currentItemData,
     required this.counter,
@@ -112,7 +112,7 @@ class CardItemCheckout extends StatelessWidget {
                                   width: 15,
                                 ),
                                 Text(
-                                  price,
+                                  totalPrice,
                                   style: TextStyleApp.lato.copyWith(
                                     color: ColorSourceApp.black,
                                     fontSize: 15,

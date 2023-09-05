@@ -1,4 +1,3 @@
-import 'package:app/service/locator.dart';
 import 'package:app/storage/shared_preferences_service.dart';
 import 'package:app/utils/fire_key.dart';
 import 'package:app/autho/widgets/button_next.dart';

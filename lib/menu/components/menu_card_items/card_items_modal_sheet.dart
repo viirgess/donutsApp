@@ -1,14 +1,14 @@
 import 'dart:ui';
 
-import 'package:app/menu/components/menu_card_items/card_item_checkout.dart';
+import 'package:app/menu/components/menu_card_items/widget/card_item_checkout.dart';
 import 'package:app/menu/cubit/add_item_to_busket/add_item_to_busket_cubit.dart';
-import 'package:app/service/locator.dart';
+import 'package:app/locator/locator.dart';
 import 'package:app/utils/color_source.dart';
 import 'package:app/utils/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'menu_footer_item.dart';
+import 'widget/menu_footer_item.dart';
 
 class CardModalSheet extends StatelessWidget {
   const CardModalSheet({
@@ -64,7 +64,7 @@ class CardModalSheet extends StatelessWidget {
                             child: CardItemCheckout(
                               title: cartItem.title,
                               imagePath: cartItem.imagePath,
-                              price: cartItem.price,
+                              totalPrice: cartItem.price,
                               imageColor: cartItem.imageColor,
                               currentItemData: cartItem,
                               counter: state.counter,

@@ -2,7 +2,7 @@ import 'package:app/menu/cubit/add_item_to_busket/add_item_to_busket_cubit.dart'
 import 'package:app/menu/cubit/navigation_cubit/navigation_menu_cubit.dart';
 
 import 'package:app/model/items_menu.dart';
-import 'package:app/service/locator.dart';
+import 'package:app/locator/locator.dart';
 import 'package:app/utils/color_source.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

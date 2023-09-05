@@ -1,13 +1,15 @@
 import 'package:app/utils/color_source.dart';
 import 'package:flutter/material.dart';
 
+import 'button_cart.dart';
+
 class MenuItemFooter extends StatelessWidget {
   const MenuItemFooter({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 220,
+      height: 190,
       decoration: const BoxDecoration(
           color: ColorSourceApp.lightPurple,
           borderRadius: BorderRadius.only(
@@ -23,22 +25,14 @@ class MenuItemFooter extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text('Subtotal'),
-                Text('9'),
-              ],
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                //Spacer(),
-                Text('Discount'),
-                //Spacer(),
-                Text('20%'),
-                //Spacer(),
+                Text(
+                  'Total',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+                Text(
+                  '\$12.99',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
               ],
             ),
             SizedBox(
@@ -51,29 +45,7 @@ class MenuItemFooter extends StatelessWidget {
             SizedBox(
               height: 18,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                // Spacer(),
-                Text(
-                  'Total',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                ),
-                // Spacer(),
-                Text(
-                  '\$12.99',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                ),
-                // Spacer(),
-              ],
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            // ButtonAddToBusketItem(
-            //   totalPrice: 12,
-            // ),
+            ButtonCart(),
           ],
         ),
       ),

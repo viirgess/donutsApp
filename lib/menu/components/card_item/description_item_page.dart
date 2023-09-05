@@ -2,7 +2,7 @@ import 'package:app/menu/components/menu_card_items/card_items_modal_sheet.dart'
 import 'package:app/menu/cubit/add_item_to_busket/add_item_to_busket_cubit.dart';
 import 'package:app/menu/cubit/item_detail_cubit/item_details_cubit.dart';
 import 'package:app/model/items_menu.dart';
-import 'package:app/service/locator.dart';
+import 'package:app/locator/locator.dart';
 import 'package:app/utils/color_source.dart';
 import 'package:app/utils/text_style.dart';
 import 'package:app/menu/widget/add_topings_item.dart';
