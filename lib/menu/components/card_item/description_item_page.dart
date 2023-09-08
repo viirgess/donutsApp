@@ -2,6 +2,7 @@ import 'package:app/menu/components/menu_card_items/card_items_modal_sheet.dart'
 import 'package:app/menu/cubit/add_item_to_busket/add_item_to_busket_cubit.dart';
 import 'package:app/menu/cubit/item_detail_cubit/item_details_cubit.dart';
 import 'package:app/model/items_menu.dart';
+import 'package:app/model/prices_toppings.dart';
 import 'package:app/service/locator.dart';
 import 'package:app/utils/color_source.dart';
 import 'package:app/utils/text_style.dart';
@@ -16,6 +17,7 @@ class DescriptionItem extends StatelessWidget {
   final String description;
   final String imagePath;
   final Color containerColor;
+  final List<AddTopppings> toppingsData;
 
   const DescriptionItem({
     super.key,
@@ -23,10 +25,12 @@ class DescriptionItem extends StatelessWidget {
     required this.description,
     required this.imagePath,
     required this.containerColor,
+    required this.toppingsData,
   });
 
   @override
   Widget build(BuildContext context) {
+    // print("Fetched Toppings Data Length: ${toppingsData.length}");
     return BlocProvider<AddItemToBusketCubit>(
       create: (context) => locator<AddItemToBusketCubit>(),
       child: Scaffold(
@@ -121,7 +125,9 @@ class DescriptionItem extends StatelessWidget {
                   ],
                 ),
               ),
-              const AddToppingsItem(),
+              AddToppingsItem(
+                toppingsData: toppingsData,
+              ),
               BlocBuilder<ItemDetailsCubit, ItemDetailsState>(
                 builder: (context, state) {
                   return Container(

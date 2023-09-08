@@ -1,11 +1,17 @@
 import 'package:app/menu/cubit/item_detail_cubit/item_details_cubit.dart';
+import 'package:app/model/prices_toppings.dart';
 import 'package:app/utils/color_source.dart';
 import 'package:app/utils/text_style.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../components/card_item/description_item_page.dart';
+
 class AddToppingsItem extends StatefulWidget {
-  const AddToppingsItem({Key? key}) : super(key: key);
+  const AddToppingsItem({Key? key, required this.toppingsData})
+      : super(key: key);
+  final List<AddTopppings> toppingsData;
 
   @override
   State<AddToppingsItem> createState() => _AddToppingsItemState();
@@ -16,6 +22,7 @@ double totalPrice = 9.0;
 class _AddToppingsItemState extends State<AddToppingsItem> {
   @override
   Widget build(BuildContext context) {
+    print("Toppings Data Length: ${widget.toppingsData.length}");
     return BlocBuilder<ItemDetailsCubit, ItemDetailsState>(
       builder: (context, state) {
         return Container(
@@ -50,7 +57,9 @@ class _AddToppingsItemState extends State<AddToppingsItem> {
                     ),
                   ),
                 ),
-                ...state.toppingsList.map((e) {
+                ...widget.toppingsData.map((e) {
+                  print(
+                      "Is ${e.title} selected: ${state.currentItem.contains(e)}");
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 3),
                     child: Row(
@@ -68,14 +77,15 @@ class _AddToppingsItemState extends State<AddToppingsItem> {
                           ),
                         ),
                         Text(
-                          '${e.title}',
+                          e.title,
                           style: TextStyleApp.lato.copyWith(
-                              color: ColorSourceApp.grey,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500),
+                            color: ColorSourceApp.grey,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                         const Spacer(),
-                        Text('+ \$' '${e.toppingPrice}'),
+                        Text('+ \$${e.toppingPrice.toStringAsFixed(2)}'),
                         const SizedBox(width: 16),
                       ],
                     ),

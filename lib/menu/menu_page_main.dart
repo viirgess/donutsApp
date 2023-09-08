@@ -7,10 +7,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../model/prices_toppings.dart';
 import 'components/card_item/description_item_page.dart';
 import 'components/menu_drawer/drawer.dart';
 
-class MenuPageMain extends StatelessWidget {
+class MenuPageMain extends StatefulWidget {
   static Color parseColor(String colorString) {
     try {
       final hexColor =
@@ -24,6 +25,51 @@ class MenuPageMain extends StatelessWidget {
   }
 
   MenuPageMain({super.key});
+
+  @override
+  State<MenuPageMain> createState() => _MenuPageMainState();
+}
+
+class _MenuPageMainState extends State<MenuPageMain> {
+  List<AddTopppings> toppingsData = [];
+
+  @override
+  void initState() {
+    super.initState();
+    fetchToppingsData();
+  }
+
+  Future<void> fetchToppingsData() async {
+    final data = await _fetchToppingsData();
+    setState(() {
+      toppingsData = data;
+    });
+  }
+
+  Future<List<AddTopppings>> _fetchToppingsData() async {
+    try {
+      final QuerySnapshot querySnapshot =
+          await FirebaseFirestore.instance.collection('Toppings').get();
+
+      return querySnapshot.docs.map((doc) {
+        final data = doc.data() as Map<String, dynamic>;
+
+        final title = data.containsKey('title') ? data['title'] as String : '';
+        final toppingPrice = data.containsKey('toppingPrice')
+            ? (data['toppingPrice'] as num).toDouble()
+            : 0.0;
+
+        return AddTopppings(
+          title: title,
+          toppingPrice: toppingPrice,
+        );
+      }).toList();
+    } catch (e, stackTrace) {
+      print('Error fetching toppings: $e');
+      print('Stack trace: $stackTrace');
+      return [];
+    }
+  }
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -84,8 +130,9 @@ class MenuPageMain extends StatelessWidget {
                           ? data['buttonColor'] as String
                           : '';
 
-                      final imageColor = parseColor(imageColorHex);
-                      final buttonColor = parseColor(buttonColorHex);
+                      final imageColor = MenuPageMain.parseColor(imageColorHex);
+                      final buttonColor =
+                          MenuPageMain.parseColor(buttonColorHex);
 
                       return MenuItem(
                         title: title,
@@ -99,7 +146,7 @@ class MenuPageMain extends StatelessWidget {
                   } catch (e, stackTrace) {
                     print('Error fetching menu items: $e');
                     print('Stack trace: $stackTrace');
-                    return []; // Return an empty list on error
+                    return [];
                   }
                 }
 
@@ -130,6 +177,7 @@ class MenuPageMain extends StatelessWidget {
                                       description: selectedItem.description,
                                       imagePath: selectedItem.imagePath,
                                       containerColor: selectedItem.imageColor,
+                                      toppingsData: toppingsData,
                                     ),
                                   ),
                                 );
