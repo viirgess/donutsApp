@@ -1,11 +1,5 @@
-import 'package:app/menu/fake_data/item_menu_fake_data.dart';
-import 'package:app/model/card_check_item.dart';
-import 'package:app/model/items_menu.dart';
-import 'package:app/model/items_menu.dart';
 import 'package:app/model/items_menu.dart';
 import 'package:bloc/bloc.dart';
-
-import '../../../model/items_menu.dart';
 
 part 'add_item_to_busket_state.dart';
 
@@ -14,8 +8,7 @@ class AddItemToBusketCubit extends Cubit<AddItemToBusketState> {
 
   void addToCart(ItemDescription item) {
     try {
-      final updatedCart = Map<ItemDescription, int>.from(
-          state.cartItems); // Provide type information
+      final updatedCart = Map<ItemDescription, int>.from(state.cartItems);
       final currentQuantity = updatedCart[item] ?? 0;
       updatedCart[item] = currentQuantity + 1;
       emit(AddItemToBusketState(cartItems: updatedCart));
@@ -27,8 +20,7 @@ class AddItemToBusketCubit extends Cubit<AddItemToBusketState> {
   }
 
   void removeFromCart(ItemDescription item) {
-    final updatedCart = Map<ItemDescription, int>.from(
-        state.cartItems); // Provide type information
+    final updatedCart = Map<ItemDescription, int>.from(state.cartItems);
     final currentQuantity = updatedCart[item] ?? 0;
     if (currentQuantity > 1) {
       updatedCart[item] = currentQuantity - 1;

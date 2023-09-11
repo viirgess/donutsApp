@@ -1,7 +1,7 @@
+import 'package:app/menu/components/menu_card_items/widget/button_cart.dart';
+import 'package:app/menu/widget/add_topings_item.dart';
 import 'package:app/utils/color_source.dart';
 import 'package:flutter/material.dart';
-
-import '../../widget/add_topings_item.dart';
 
 class MenuItemFooter extends StatelessWidget {
   const MenuItemFooter({super.key});
@@ -21,38 +21,6 @@ class MenuItemFooter extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text('Subtotal'),
-                Text('9'),
-              ],
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                //Spacer(),
-                Text('Discount'),
-                //Spacer(),
-                Text('20%'),
-                //Spacer(),
-              ],
-            ),
-            const SizedBox(
-              height: 18,
-            ),
-            const Divider(
-              height: 1,
-              color: ColorSourceApp.grey,
-            ),
-            const SizedBox(
-              height: 18,
-            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -65,17 +33,26 @@ class MenuItemFooter extends StatelessWidget {
                 // Spacer(),
                 Text(
                   '\$$totalPrice',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 18),
                 ),
                 // Spacer(),
               ],
             ),
             const SizedBox(
-              height: 30,
+              height: 18,
             ),
-            // ButtonAddToBusketItem(
-            //   totalPrice: 12,
-            // ),
+            const Divider(
+              height: 1,
+              color: ColorSourceApp.grey,
+            ),
+            const SizedBox(
+              height: 18,
+            ),
+            const ButtonCart(),
+            const SizedBox(
+              height: 5,
+            ),
           ],
         ),
       ),
