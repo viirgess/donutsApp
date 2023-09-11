@@ -8,6 +8,7 @@ import 'package:app/utils/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../model/items_menu.dart';
 import 'menu_footer_item.dart';
 
 class CardModalSheet extends StatelessWidget {
@@ -58,16 +59,17 @@ class CardModalSheet extends StatelessWidget {
                       child: ListView.builder(
                         itemCount: cartItems.length,
                         itemBuilder: (context, index) {
-                          final cartItem = cartItems[index];
+                          final cartItem = cartItems.keys.elementAt(index);
+
                           return Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 12),
                             child: CardItemCheckout(
-                              title: cartItem.title,
-                              imagePath: cartItem.imagePath,
-                              price: cartItem.price,
-                              imageColor: cartItem.imageColor,
+                              title: cartItem.title ?? '',
+                              imagePath: cartItem.imagePath ?? '',
+                              price: cartItem.price ?? '',
+                              imageColor:
+                                  cartItem.imageColor ?? Colors.transparent,
                               currentItemData: cartItem,
-                              //data: cartItem,
                             ),
                           );
                         },
@@ -78,10 +80,7 @@ class CardModalSheet extends StatelessWidget {
                 ),
               );
             },
-            listener: (context, state) {
-              // This listener is triggered whenever the state changes.
-              // You can add any necessary actions here.
-            },
+            listener: (_, __) {},
           ),
         ),
       ),

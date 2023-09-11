@@ -30,9 +30,8 @@ class DescriptionItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // print("Fetched Toppings Data Length: ${toppingsData.length}");
-    return BlocProvider<AddItemToBusketCubit>(
-      create: (context) => locator<AddItemToBusketCubit>(),
+    return BlocProvider.value(
+      value: locator<AddItemToBusketCubit>(),
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
@@ -143,7 +142,7 @@ class DescriptionItem extends StatelessWidget {
                           imagePath: imagePath,
                           imageColor: containerColor,
                           buttonColor: Colors.black,
-                          price: '',
+                          price: '\$$totalPrice',
                           //  containerColor: containerColor,
                         ),
                       ),

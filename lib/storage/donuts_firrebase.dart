@@ -8,9 +8,11 @@ Future<void> addFakeDataToFirebase() async {
     final CollectionReference itemsCollection =
         FirebaseFirestore.instance.collection('Donuts');
 
-    QuerySnapshot existingData = await itemsCollection.get();
-    if (existingData.docs.isEmpty) {
-      for (final item in ItemMenuFakeData.FakeDataItemMenu) {
+    for (final item in ItemMenuFakeData.FakeDataItemMenu) {
+      final existingItem =
+          await itemsCollection.where('title', isEqualTo: item.title).get();
+
+      if (existingItem.docs.isEmpty) {
         await itemsCollection.add({
           'title': item.title,
           'description': item.description,
@@ -19,11 +21,12 @@ Future<void> addFakeDataToFirebase() async {
           'price': item.price,
           'buttonColor': item.buttonColor.toString(),
         });
+        print('Data added to Firestore for: ${item.title}');
+      } else {
+        print('Data for ${item.title} already exists in Firestore. Skipped.');
       }
-      print('Data added to Firestore successfully.');
-    } else {
-      print('Data already exists in Firestore. No action taken.');
     }
+    print('Data added to Firestore successfully.');
   } catch (e) {
     print('Error adding data to Firestore: $e');
   }

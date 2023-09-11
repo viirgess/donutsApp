@@ -1,6 +1,8 @@
 import 'package:app/utils/color_source.dart';
 import 'package:flutter/material.dart';
 
+import '../../widget/add_topings_item.dart';
+
 class MenuItemFooter extends StatelessWidget {
   const MenuItemFooter({super.key});
 
@@ -14,12 +16,12 @@ class MenuItemFooter extends StatelessWidget {
             topLeft: Radius.circular(60.0),
             topRight: Radius.circular(60.0),
           )),
-      child: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 55),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 55),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -27,10 +29,10 @@ class MenuItemFooter extends StatelessWidget {
                 Text('9'),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -41,14 +43,14 @@ class MenuItemFooter extends StatelessWidget {
                 //Spacer(),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 18,
             ),
-            Divider(
+            const Divider(
               height: 1,
               color: ColorSourceApp.grey,
             ),
-            SizedBox(
+            const SizedBox(
               height: 18,
             ),
             Row(
@@ -56,19 +58,19 @@ class MenuItemFooter extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 // Spacer(),
-                Text(
+                const Text(
                   'Total',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
                 // Spacer(),
                 Text(
-                  '\$12.99',
+                  '\$$totalPrice',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
                 // Spacer(),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             // ButtonAddToBusketItem(

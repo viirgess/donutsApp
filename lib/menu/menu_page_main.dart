@@ -8,8 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../model/prices_toppings.dart';
+import '../service/locator.dart';
 import 'components/card_item/description_item_page.dart';
 import 'components/menu_drawer/drawer.dart';
+import 'cubit/add_item_to_busket/add_item_to_busket_cubit.dart';
 
 class MenuPageMain extends StatefulWidget {
   static Color parseColor(String colorString) {
@@ -79,123 +81,133 @@ class _MenuPageMainState extends State<MenuPageMain> {
       onWillPop: () async {
         return false;
       },
-      child: Scaffold(
-        key: _scaffoldKey,
-        appBar: CustomAppBar(scaffoldKey: _scaffoldKey),
-        drawer: BlocProvider<RegisterPageCubit>(
-          create: (context) => RegisterPageCubit(),
-          child: BlocBuilder<RegisterPageCubit, RegisterPageState>(
-            builder: (context, state) {
-              return SizedBox(
-                width: MediaQuery.of(context).size.width * 0.60,
-                child: const Drawer(
-                  child: DrawerMenu(),
-                ),
-              );
-            },
-          ),
-        ),
-        body: SingleChildScrollView(
-          child: BlocProvider<NavigationMenuCubit>(
-            create: (context) => NavigationMenuCubit(),
-            child: BlocBuilder<NavigationMenuCubit, NavigationMenuState>(
+      child: BlocProvider.value(
+        value: locator<AddItemToBusketCubit>(),
+        child: Scaffold(
+          key: _scaffoldKey,
+          appBar: CustomAppBar(scaffoldKey: _scaffoldKey),
+          drawer: BlocProvider<RegisterPageCubit>(
+            create: (context) => RegisterPageCubit(),
+            child: BlocBuilder<RegisterPageCubit, RegisterPageState>(
               builder: (context, state) {
-                Future<List<MenuItem>> fetchMenuItems() async {
-                  try {
-                    final QuerySnapshot querySnapshot = await FirebaseFirestore
-                        .instance
-                        .collection('Donuts')
-                        .get();
-
-                    return querySnapshot.docs.map((doc) {
-                      final data =
-                          doc.data() as Map<String, dynamic>; // Explicit cast
-
-                      final title = data.containsKey('title')
-                          ? data['title'] as String
-                          : '';
-                      final description = data.containsKey('description')
-                          ? data['description'] as String
-                          : '';
-                      final imagePath = data.containsKey('imagePath')
-                          ? data['imagePath'] as String
-                          : '';
-                      final imageColorHex = data.containsKey('imageColor')
-                          ? data['imageColor'] as String
-                          : '';
-                      final price = data.containsKey('price')
-                          ? data['price'] as String
-                          : '';
-                      final buttonColorHex = data.containsKey('buttonColor')
-                          ? data['buttonColor'] as String
-                          : '';
-
-                      final imageColor = MenuPageMain.parseColor(imageColorHex);
-                      final buttonColor =
-                          MenuPageMain.parseColor(buttonColorHex);
-
-                      return MenuItem(
-                        title: title,
-                        description: description,
-                        imagePath: imagePath,
-                        imageColor: imageColor,
-                        price: price,
-                        buttonColor: buttonColor,
-                      );
-                    }).toList();
-                  } catch (e, stackTrace) {
-                    print('Error fetching menu items: $e');
-                    print('Stack trace: $stackTrace');
-                    return [];
-                  }
-                }
-
-                return FutureBuilder<List<MenuItem>>(
-                  future: fetchMenuItems(),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const CircularProgressIndicator();
-                    } else if (snapshot.hasError || !snapshot.hasData) {
-                      return const Text('Error loading menu items');
-                    } else {
-                      final menuItems = snapshot.data!;
-
-                      return Column(
-                        children: [
-                          for (int index = 0; index < menuItems.length; index++)
-                            GestureDetector(
-                              onTap: () {
-                                context
-                                    .read<NavigationMenuCubit>()
-                                    .selectItem(index);
-                                final selectedItem = menuItems[index];
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => DescriptionItem(
-                                      title: selectedItem.title,
-                                      description: selectedItem.description,
-                                      imagePath: selectedItem.imagePath,
-                                      containerColor: selectedItem.imageColor,
-                                      toppingsData: toppingsData,
-                                    ),
-                                  ),
-                                );
-                              },
-                              child: CardMenuItem(
-                                title: menuItems[index].title,
-                                description: menuItems[index].description,
-                                imagePath: menuItems[index].imagePath,
-                                price: menuItems[index].price,
-                                imageColor: menuItems[index].imageColor,
-                              ),
-                            ),
-                        ],
-                      );
-                    }
-                  },
+                return SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.60,
+                  child: const Drawer(
+                    child: DrawerMenu(),
+                  ),
                 );
               },
+            ),
+          ),
+          body: SingleChildScrollView(
+            child: MultiBlocProvider(
+              providers: [
+                BlocProvider<NavigationMenuCubit>(
+                  create: (context) => NavigationMenuCubit(),
+                ),
+              ],
+              child: BlocBuilder<NavigationMenuCubit, NavigationMenuState>(
+                builder: (context, state) {
+                  Future<List<MenuItem>> fetchMenuItems() async {
+                    try {
+                      final QuerySnapshot querySnapshot =
+                          await FirebaseFirestore.instance
+                              .collection('Donuts')
+                              .get();
+
+                      return querySnapshot.docs.map((doc) {
+                        final data =
+                            doc.data() as Map<String, dynamic>; // Explicit cast
+
+                        final title = data.containsKey('title')
+                            ? data['title'] as String
+                            : '';
+                        final description = data.containsKey('description')
+                            ? data['description'] as String
+                            : '';
+                        final imagePath = data.containsKey('imagePath')
+                            ? data['imagePath'] as String
+                            : '';
+                        final imageColorHex = data.containsKey('imageColor')
+                            ? data['imageColor'] as String
+                            : '';
+                        final price = data.containsKey('price')
+                            ? data['price'] as String
+                            : '';
+                        final buttonColorHex = data.containsKey('buttonColor')
+                            ? data['buttonColor'] as String
+                            : '';
+
+                        final imageColor =
+                            MenuPageMain.parseColor(imageColorHex);
+                        final buttonColor =
+                            MenuPageMain.parseColor(buttonColorHex);
+
+                        return MenuItem(
+                          title: title,
+                          description: description,
+                          imagePath: imagePath,
+                          imageColor: imageColor,
+                          price: price,
+                          buttonColor: buttonColor,
+                        );
+                      }).toList();
+                    } catch (e, stackTrace) {
+                      print('Error fetching menu items: $e');
+                      print('Stack trace: $stackTrace');
+                      return [];
+                    }
+                  }
+
+                  return FutureBuilder<List<MenuItem>>(
+                    future: fetchMenuItems(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const CircularProgressIndicator();
+                      } else if (snapshot.hasError || !snapshot.hasData) {
+                        return const Text('Error loading menu items');
+                      } else {
+                        final menuItems = snapshot.data!;
+
+                        return Column(
+                          children: [
+                            for (int index = 0;
+                                index < menuItems.length;
+                                index++)
+                              GestureDetector(
+                                onTap: () {
+                                  context
+                                      .read<NavigationMenuCubit>()
+                                      .selectItem(index);
+                                  final selectedItem = menuItems[index];
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => DescriptionItem(
+                                        title: selectedItem.title,
+                                        description: selectedItem.description,
+                                        imagePath: selectedItem.imagePath,
+                                        containerColor: selectedItem.imageColor,
+                                        toppingsData: toppingsData,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: CardMenuItem(
+                                  title: menuItems[index].title,
+                                  description: menuItems[index].description,
+                                  imagePath: menuItems[index].imagePath,
+                                  price: menuItems[index].price,
+                                  imageColor: menuItems[index].imageColor,
+                                ),
+                              ),
+                          ],
+                        );
+                      }
+                    },
+                  );
+                },
+              ),
             ),
           ),
         ),
