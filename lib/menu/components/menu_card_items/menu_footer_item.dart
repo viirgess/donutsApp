@@ -9,51 +9,54 @@ class MenuItemFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 220,
-      decoration: const BoxDecoration(
-          color: ColorSourceApp.lightPurple,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(60.0),
-            topRight: Radius.circular(60.0),
-          )),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 55),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                // Spacer(),
-                const Text(
-                  'Total',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                ),
-                // Spacer(),
-                Text(
-                  '\$$totalPrice',
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 18),
-                ),
-                // Spacer(),
-              ],
-            ),
-            const SizedBox(
-              height: 18,
-            ),
-            const Divider(
-              height: 1,
-              color: ColorSourceApp.grey,
-            ),
-            const SizedBox(
-              height: 18,
-            ),
-            const ButtonCart(),
-            const SizedBox(
-              height: 5,
-            ),
-          ],
+      color: Colors.transparent,
+      child: Container(
+        height: 170,
+        decoration: const BoxDecoration(
+            color: ColorSourceApp.lightPurple,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(60.0),
+              topRight: Radius.circular(60.0),
+            )),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 55),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  // Spacer(),
+                  const Text(
+                    'Total',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+                  // Spacer(),
+                  Text(
+                    '\$$totalPrice',
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+                  // Spacer(),
+                ],
+              ),
+              const SizedBox(
+                height: 18,
+              ),
+              const Divider(
+                height: 1,
+                color: ColorSourceApp.grey,
+              ),
+              const SizedBox(
+                height: 18,
+              ),
+              const ButtonCart(),
+              const SizedBox(
+                height: 5,
+              ),
+            ],
+          ),
         ),
       ),
     );
