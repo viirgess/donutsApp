@@ -29,7 +29,7 @@ class CardItemCheckout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final counterCubit = context.watch<CounterCubit>();
+    //final counterCubit = context.watch<CounterCubit>();
     return MultiBlocProvider(
       providers: [
         BlocProvider<AddItemToBusketCubit>(

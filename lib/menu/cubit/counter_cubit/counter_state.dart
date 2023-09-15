@@ -4,7 +4,7 @@ class CounterState {
   final List<ItemDescription> cartItems;
   final int counter;
 
-  const CounterState({required this.cartItems, this.counter = 0});
+  const CounterState({required this.cartItems, this.counter = 1});
 
   CounterState copyWith({List<ItemDescription>? cartItems, int? counter}) {
     return CounterState(
