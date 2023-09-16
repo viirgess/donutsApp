@@ -1,7 +1,7 @@
 class CardCheckItem {
   final String title;
   final String imagePath;
-  final String price;
+  final double price;
 
   CardCheckItem({
     required this.title,

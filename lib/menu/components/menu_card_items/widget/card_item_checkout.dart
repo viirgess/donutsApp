@@ -18,6 +18,7 @@ class CardItemCheckout extends StatelessWidget {
   final ItemDescription currentItemData;
   final int counter;
   final ItemDetailsState selectedItemDetails;
+  final double totalPrice;
 
   const CardItemCheckout({
     super.key,
@@ -28,11 +29,16 @@ class CardItemCheckout extends StatelessWidget {
     required this.currentItemData,
     required this.counter,
     required this.selectedItemDetails,
+    required this.totalPrice,
   });
 
   @override
   Widget build(BuildContext context) {
-    //final counterCubit = context.watch<CounterCubit>();
+    double totalPrice = double.tryParse(currentItemData.price) ?? 9.99;
+
+    for (var topping in currentItemData.selectedToppings) {
+      totalPrice += topping.toppingPrice;
+    }
     return MultiBlocProvider(
       providers: [
         BlocProvider<AddItemToBusketCubit>(
@@ -57,7 +63,7 @@ class CardItemCheckout extends StatelessWidget {
                   onPressed: (BuildContext context) {
                     final currentItem = locator<AddItemToBusketCubit>()
                         .removeFromCart(currentItemData);
-                    debugPrint('Removed to Cart: ${currentItemData.title}');
+                    debugPrint('Removed from Cart: ${currentItemData.title}');
                   },
                   backgroundColor: Colors.transparent,
                   child: SvgPicture.asset(
@@ -131,7 +137,7 @@ class CardItemCheckout extends StatelessWidget {
                                       width: 15,
                                     ),
                                     Text(
-                                      price,
+                                      '\$${totalPrice.toStringAsFixed(2)}',
                                       style: TextStyleApp.lato.copyWith(
                                         color: ColorSourceApp.black,
                                         fontSize: 15,
@@ -152,6 +158,9 @@ class CardItemCheckout extends StatelessWidget {
                                           child: Row(
                                             children: [
                                               const Icon(Icons.remove),
+                                              const SizedBox(
+                                                width: 5,
+                                              ),
                                               Text(
                                                 topping.title,
                                                 style:

@@ -4,13 +4,13 @@ import 'package:app/menu/components/menu_card_items/widget/card_item_checkout.da
 import 'package:app/menu/cubit/add_item_to_busket/add_item_to_busket_cubit.dart';
 import 'package:app/menu/cubit/counter_cubit/counter_cubit.dart';
 import 'package:app/menu/cubit/item_detail_cubit/item_details_cubit.dart';
+import 'package:app/menu/widget/add_topings_item.dart';
 import 'package:app/service/locator.dart';
 import 'package:app/utils/color_source.dart';
 import 'package:app/utils/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../model/items_menu.dart';
 import 'menu_footer_item.dart';
 
 class CardModalSheet extends StatelessWidget {
@@ -50,6 +50,7 @@ class CardModalSheet extends StatelessWidget {
           child: BlocConsumer<AddItemToBusketCubit, AddItemToBusketState>(
             builder: (context, state) {
               final cartItems = state.cartItems;
+
               return FractionallySizedBox(
                 heightFactor: 0.82,
                 child: Column(
@@ -86,6 +87,7 @@ class CardModalSheet extends StatelessWidget {
                                   context.read<CounterCubit>().state.counter,
                               selectedItemDetails:
                                   context.watch<ItemDetailsCubit>().state,
+                              totalPrice: totalPrice,
                             ),
                           );
                         },
