@@ -140,17 +140,32 @@ class CardItemCheckout extends StatelessWidget {
                                   ],
                                 ),
                                 Column(
-                                  children: [
-                                    Text(
-                                      currentItemData.selectedToppings
-                                          .map((e) => e.title)
-                                          .join(', '),
-                                      style: TextStyleApp.lato.copyWith(
-                                        color: ColorSourceApp.black,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  ],
+                                  children: currentItemData.selectedToppings
+                                      .map((topping) {
+                                    return Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(top: 2),
+                                          child: Row(
+                                            children: [
+                                              const Icon(Icons.remove),
+                                              Text(
+                                                topping.title,
+                                                style:
+                                                    TextStyleApp.lato.copyWith(
+                                                  color: ColorSourceApp.black,
+                                                  fontSize: 16,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    );
+                                  }).toList(),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(
