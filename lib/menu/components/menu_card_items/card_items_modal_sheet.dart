@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:app/menu/components/menu_card_items/widget/card_item_checkout.dart';
 import 'package:app/menu/cubit/add_item_to_busket/add_item_to_busket_cubit.dart';
 import 'package:app/menu/cubit/counter_cubit/counter_cubit.dart';
+import 'package:app/menu/cubit/item_detail_cubit/item_details_cubit.dart';
 import 'package:app/service/locator.dart';
 import 'package:app/utils/color_source.dart';
 import 'package:app/utils/text_style.dart';
@@ -26,6 +27,9 @@ class CardModalSheet extends StatelessWidget {
         ),
         BlocProvider<CounterCubit>(
           create: (context) => CounterCubit(),
+        ),
+        BlocProvider<ItemDetailsCubit>(
+          create: (context) => ItemDetailsCubit(),
         ),
       ],
       child: BackdropFilter(
@@ -80,6 +84,8 @@ class CardModalSheet extends StatelessWidget {
                               currentItemData: cartItem,
                               counter:
                                   context.read<CounterCubit>().state.counter,
+                              selectedItemDetails:
+                                  context.watch<ItemDetailsCubit>().state,
                             ),
                           );
                         },

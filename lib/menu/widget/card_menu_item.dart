@@ -42,6 +42,7 @@ class CardMenuItem extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            //Spacer(),
             Container(
               decoration: BoxDecoration(
                 color: imageColor,
@@ -56,9 +57,10 @@ class CardMenuItem extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(
-              width: 5,
-            ),
+            Spacer(),
+            // const SizedBox(
+            //   width: 5,
+            // ),
             Column(
               children: [
                 SizedBox(
@@ -113,6 +115,7 @@ class CardMenuItem extends StatelessWidget {
                 ),
               ],
             ),
+            Spacer(),
           ],
         ),
       ),

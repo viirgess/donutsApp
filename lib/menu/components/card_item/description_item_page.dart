@@ -142,7 +142,7 @@ class DescriptionItem extends StatelessWidget {
                           imagePath: imagePath,
                           imageColor: containerColor,
                           buttonColor: Colors.black,
-                          price: '\$$totalPrice',
+                          price: '\$$totalPrice', selectedToppings: [],
                           //  containerColor: containerColor,
                         ),
                       ),

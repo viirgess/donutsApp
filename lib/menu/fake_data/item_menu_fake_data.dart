@@ -11,7 +11,8 @@ class ItemMenuFakeData {
         imagePath: 'images/dark_blue_donuts.png',
         imageColor: ColorSourceApp.lightBlue,
         price: '\$12,55',
-        buttonColor: ColorSourceApp.blue),
+        buttonColor: ColorSourceApp.blue,
+        selectedToppings: []),
     ItemDescription(
         title: 'SPRINKLE-TOPPED BLUE CREAM DREAM',
         description:
@@ -19,7 +20,8 @@ class ItemMenuFakeData {
         imagePath: 'images/dark_blue_donuts.png',
         imageColor: ColorSourceApp.lightBlue,
         price: '\$12,55',
-        buttonColor: ColorSourceApp.blue),
+        buttonColor: ColorSourceApp.blue,
+        selectedToppings: []),
     ItemDescription(
         title: 'STRAWBERRY SPRINKLE SENSATIO',
         description:
@@ -27,7 +29,8 @@ class ItemMenuFakeData {
         imagePath: 'images/pink_donuts.png',
         imageColor: ColorSourceApp.lightPink,
         price: '\$9.99',
-        buttonColor: ColorSourceApp.pink),
+        buttonColor: ColorSourceApp.pink,
+        selectedToppings: []),
     ItemDescription(
       title: 'MATCHA BLISS DONUT',
       description:
@@ -36,6 +39,7 @@ class ItemMenuFakeData {
       imageColor: ColorSourceApp.lightGreen,
       price: '\$16.99',
       buttonColor: ColorSourceApp.lightGreen,
+      selectedToppings: [],
     ),
     ItemDescription(
         title: 'HAZELNUT DELIGHT SPREAD',
@@ -44,7 +48,8 @@ class ItemMenuFakeData {
         imagePath: 'images/brown_donuts.png',
         imageColor: ColorSourceApp.lightBrown,
         price: '\$8.99',
-        buttonColor: ColorSourceApp.brown),
+        buttonColor: ColorSourceApp.brown,
+        selectedToppings: []),
     ItemDescription(
         title: 'HAZELNUT DELIGHT SPREAD',
         description:
@@ -52,7 +57,8 @@ class ItemMenuFakeData {
         imagePath: 'images/brown_donuts.png',
         imageColor: ColorSourceApp.lightBrown,
         price: '\$11.99',
-        buttonColor: ColorSourceApp.brown),
+        buttonColor: ColorSourceApp.brown,
+        selectedToppings: []),
     ItemDescription(
       title: 'MATCHA BLISS DONUT',
       description:
@@ -61,6 +67,7 @@ class ItemMenuFakeData {
       imageColor: ColorSourceApp.lightGreen,
       price: '\$12.99',
       buttonColor: ColorSourceApp.lightGreen,
+      selectedToppings: [],
     ),
     ItemDescription(
         title: 'STRAWBERRY SPRINKLE SENSATIO',
@@ -69,6 +76,7 @@ class ItemMenuFakeData {
         imagePath: 'images/pink_donuts.png',
         price: '\$10.99',
         imageColor: ColorSourceApp.lightPink,
-        buttonColor: ColorSourceApp.pink),
+        buttonColor: ColorSourceApp.pink,
+        selectedToppings: []),
   ];
 }

@@ -1,5 +1,6 @@
 import 'package:app/menu/cubit/add_item_to_busket/add_item_to_busket_cubit.dart';
 import 'package:app/menu/cubit/counter_cubit/counter_cubit.dart';
+import 'package:app/menu/cubit/item_detail_cubit/item_details_cubit.dart';
 import 'package:app/model/items_menu.dart';
 import 'package:app/service/locator.dart';
 import 'package:app/utils/color_source.dart';
@@ -16,6 +17,7 @@ class CardItemCheckout extends StatelessWidget {
   final Color imageColor;
   final ItemDescription currentItemData;
   final int counter;
+  final ItemDetailsState selectedItemDetails;
 
   const CardItemCheckout({
     super.key,
@@ -25,6 +27,7 @@ class CardItemCheckout extends StatelessWidget {
     required this.imageColor,
     required this.currentItemData,
     required this.counter,
+    required this.selectedItemDetails,
   });
 
   @override
@@ -37,6 +40,9 @@ class CardItemCheckout extends StatelessWidget {
         ),
         BlocProvider<CounterCubit>(
           create: (context) => CounterCubit(),
+        ),
+        BlocProvider<ItemDetailsCubit>(
+          create: (context) => ItemDetailsCubit(),
         ),
       ],
       child: BlocBuilder<CounterCubit, CounterState>(
@@ -129,6 +135,19 @@ class CardItemCheckout extends StatelessWidget {
                                       style: TextStyleApp.lato.copyWith(
                                         color: ColorSourceApp.black,
                                         fontSize: 15,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    Text(
+                                      currentItemData.selectedToppings
+                                          .map((e) => e.title)
+                                          .join(', '),
+                                      style: TextStyleApp.lato.copyWith(
+                                        color: ColorSourceApp.black,
+                                        fontSize: 16,
                                       ),
                                     ),
                                   ],

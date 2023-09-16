@@ -1,7 +1,9 @@
 import 'package:app/menu/cubit/add_item_to_busket/add_item_to_busket_cubit.dart';
+import 'package:app/menu/cubit/item_detail_cubit/item_details_cubit.dart';
 import 'package:app/menu/cubit/navigation_cubit/navigation_menu_cubit.dart';
 
 import 'package:app/model/items_menu.dart';
+import 'package:app/model/prices_toppings.dart';
 import 'package:app/service/locator.dart';
 import 'package:app/utils/color_source.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +13,14 @@ class ButtonAddToBusketItem extends StatelessWidget {
   final ItemDescription currentItem;
   final double totalPrice;
 
-  const ButtonAddToBusketItem(
-      {super.key, required this.totalPrice, required this.currentItem});
+  //final List<AddTopppings> selectedToppings;
+
+  const ButtonAddToBusketItem({
+    super.key,
+    required this.totalPrice,
+    required this.currentItem,
+    //required this.selectedToppings,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +28,8 @@ class ButtonAddToBusketItem extends StatelessWidget {
       create: (context) => NavigationMenuCubit(),
       child: BlocBuilder<AddItemToBusketCubit, AddItemToBusketState>(
         builder: (context, state) {
+          final selectedToppings =
+              context.watch<ItemDetailsCubit>().state.currentItem;
           return Container(
             height: 45,
             width: double.infinity,
@@ -53,6 +63,10 @@ class ButtonAddToBusketItem extends StatelessWidget {
                   ),
                   child: TextButton(
                     onPressed: () {
+                      List<AddTopppings> selectedToppingsList =
+                          selectedToppings.cast<AddTopppings>();
+                      currentItem.selectedToppings = selectedToppingsList;
+
                       context
                           .read<AddItemToBusketCubit>()
                           .addToCart(currentItem);

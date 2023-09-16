@@ -22,7 +22,7 @@ double totalPrice = 9.0;
 class _AddToppingsItemState extends State<AddToppingsItem> {
   @override
   Widget build(BuildContext context) {
-    print("Toppings Data Length: ${widget.toppingsData.length}");
+    //print("Toppings Data Length: ${widget.toppingsData.length}");
     return BlocBuilder<ItemDetailsCubit, ItemDetailsState>(
       builder: (context, state) {
         return Container(
