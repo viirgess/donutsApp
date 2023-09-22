@@ -1,3 +1,4 @@
+import 'package:app/menu/components/order_checkout/pages/order_checkout_page.dart';
 import 'package:app/utils/color_source.dart';
 import 'package:flutter/material.dart';
 
@@ -40,7 +41,13 @@ class ButtonCart extends StatelessWidget {
               color: Colors.amber,
             ),
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const OrderPage(),
+                  ),
+                );
+              },
               child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
