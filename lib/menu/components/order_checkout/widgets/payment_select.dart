@@ -45,7 +45,7 @@ class PaymentSelectWidget extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    paymentSelectCubit.selectPaymentMethod();
+                    // paymentSelectCubit.selectPaymentMethod();
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
